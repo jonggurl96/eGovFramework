@@ -15,11 +15,11 @@ if(msg != "") {
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
 $(document).ready(function() {
-	$('.login-btn-box input').on("click", function() {
+	$('.submit-btn-box input').on("click", function() {
 		$('.login-info-box').submit();
 	});
-	$('.regist-btn-box input').on("click", function() {
-		self.location="/user/regist";
+	$('.cancel-btn-box input').on("click", function() {
+		self.location="/user/login";
 	});
 });
 </script>
@@ -41,11 +41,11 @@ $(document).ready(function() {
 			<input type="password" name="pw" placeholder=<spring:message code="label.pw.placeholder"/>>
 		</div>
 	</form>
-	<div class="login-btn-box">
-		<input type="submit" value="<spring:message code="label.login"/>">
+	<div class="submit-btn-box">
+		<input type="submit" value="<spring:message code="button.submit"/>">
 	</div>
-	<div class="regist-btn-box">
-		<input type="submit" value="<spring:message code="label.user.regist"/>">
+	<div class="cancel-btn-box">
+		<input type="submit" value="<spring:message code="button.cancel"/>">
 	</div>
 </div>
 <div class="footer">
