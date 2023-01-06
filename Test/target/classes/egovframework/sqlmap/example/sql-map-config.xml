@@ -5,4 +5,5 @@
 	<!-- <sqlMap resource="egovframework/sqlmap/example/sample/EgovSample_Sample_SQL.xml"/> -->
 	<!-- 다른 mapper 만들고 대기 -->
 	<sqlMap resource="egovframework/sqlmap/test/mappers/boardMapper.xml"/>
+	<sqlMap resource="egovframework/sqlmap/test/mappers/userMapper.xml"/>
 </sqlMapConfig>

@@ -22,6 +22,6 @@
 		<property name="basePackage" value="cpservice.fwd.service.impl" />
 	</bean> -->
 	
-	<context:component-scan base-package="cpservice.board.service, cpservice.board.dao"></context:component-scan>
+	<context:component-scan base-package="cpservice.board"></context:component-scan>
     
 </beans>
