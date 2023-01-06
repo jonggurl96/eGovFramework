@@ -1,0 +1,56 @@
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import cpservice.board.dao.BoardDAO;
+import cpservice.board.domain.BoardVO;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations= {"file:src/main/resources/egovframework/spring/context-datasource.xml",
+"file:src/main/resources/egovframework/spring/context-mapper.xml"})
+public class BoardDAOTest {
+
+	@Inject
+	private BoardDAO dao;
+	
+	@Test
+	public void update() throws Exception {
+		BoardVO vo = new BoardVO();
+		vo.setTitle("updated title");
+		vo.setContent("updated content");
+		vo.setBno(128);
+		dao.update(vo);
+	}
+	
+	@Test
+	public void read() throws Exception {
+		System.out.println(dao.read(128));
+	}
+	
+	@Test
+	public void delete() throws Exception {
+		dao.delete(2);
+	}
+	
+//	@Test
+//	public void insert() throws Exception {
+//		BoardVO vo = new BoardVO();
+//		vo.setTitle("new title");
+//		vo.setContent("new content");
+//		vo.setWriter("new user");
+//		dao.insert(vo);
+//	}
+	
+	@Test
+	public void listAll() throws Exception {
+		List<BoardVO> list = dao.list();
+		for(BoardVO vo : list) {
+			System.out.println(vo);
+		}
+	}
+}
