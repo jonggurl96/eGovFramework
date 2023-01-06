@@ -1,6 +1,7 @@
 package cpservice.board.web;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +29,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="login", method=RequestMethod.POST)
-	public String loginpost(LoginDTO dto, RedirectAttributes rttr) throws Exception {
+	public String loginpost(LoginDTO dto, RedirectAttributes rttr, HttpServletRequest request) throws Exception {
 		UserVO vo = service.login(dto);
 		logger.info("login " + vo);
 		if(vo == null) {
@@ -36,6 +37,7 @@ public class UserController {
 			return "redirect:/user/login";
 		}
 		else {
+			request.getSession().setAttribute("id", vo.getId());
 			return "redirect:/board/paginatedList?page=1&rcpp=10";
 		}
 	}
