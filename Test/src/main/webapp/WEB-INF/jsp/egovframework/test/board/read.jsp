@@ -8,11 +8,19 @@
 $(document).ready(function() {
 	var form = $("form[role='form']");
 	$(".btn-warning").on("click", function() {
+		if("${vo.writer}" != "${loginInfo.id}") {
+			alert("수정 불가");
+			return;
+		}
 		form.attr("action", "/board/modify");
 		form.attr("method", "get");
 		form.submit();
 	});
 	$(".btn-danger").on("click", function() {
+		if("${vo.writer}" != "${loginInfo.id}") {
+			alert("삭제 불가");
+			return;
+		}
 		form.attr("action", "/board/remove");
 		form.submit();
 	});

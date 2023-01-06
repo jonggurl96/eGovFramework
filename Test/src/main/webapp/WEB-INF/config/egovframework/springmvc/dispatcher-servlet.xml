@@ -68,6 +68,10 @@
             <mvc:mapping path="/user/loginPost" />
             <bean id="loginInterceptor" class="cpservice.board.interceptor.LoginInterceptor"></bean>
         </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/board/read" />
+            <bean id="readAuthInterceptor" class="cpservice.board.interceptor.ReadAuthInterceptor"></bean>
+        </mvc:interceptor>
 	</mvc:interceptors>
     
 </beans>
