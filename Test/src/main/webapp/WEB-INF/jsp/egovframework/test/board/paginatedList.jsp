@@ -34,6 +34,8 @@ $(document).ready(function() {
 </head>
 <body>
 
+<%@ include file="../user/logout_banner.jspf" %>
+
 <div class="div-body" style="align:center; height:800px background-color:#ffffff">
 	<div class="div-body-header" style="text-align:center; background-color:aqua">
 		<div class="board-title">

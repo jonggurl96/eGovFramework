@@ -28,18 +28,12 @@ public class UserController {
 		logger.info("move to login page .......");
 	}
 	
-//	@RequestMapping(value="login", method=RequestMethod.POST)
-//	public String loginpost(LoginDTO dto, RedirectAttributes rttr, HttpServletRequest request) throws Exception {
-//		UserVO vo = service.login(dto);
-//		logger.info("login " + vo);
-//		if(vo == null) {
-//			rttr.addFlashAttribute("msg", "로그인 실패");
-//			return "redirect:/user/login";
-//		}
-//		else {
-//			return "redirect:/board/paginatedList?page=1&rcpp=10";
-//		}
-//	}
+	@RequestMapping(value="loginPost", method=RequestMethod.POST)
+	public void loginpost(LoginDTO dto, Model model) throws Exception {
+		UserVO vo = service.login(dto);
+		logger.info("login " + vo);
+		model.addAttribute("loginInfo", vo);
+	}
 	
 	@RequestMapping(value="regist")
 	public void regist() throws Exception {
@@ -61,11 +55,9 @@ public class UserController {
 		
 	}
 	
-	@RequestMapping(value="loginPost", method=RequestMethod.POST)
-	public void loginpost(LoginDTO dto, Model model) throws Exception {
-		UserVO vo = service.login(dto);
-		logger.info("login " + vo);
-		model.addAttribute("loginInfo", vo);
+	@RequestMapping(value="logout")
+	public void logout(Model model) throws Exception {
+		model.addAttribute("msg", "로그아웃 되었습니다.");
 	}
 
 }
