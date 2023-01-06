@@ -37,7 +37,6 @@ public class UserController {
 			return "redirect:/user/login";
 		}
 		else {
-			request.getSession().setAttribute("id", vo.getId());
 			return "redirect:/board/paginatedList?page=1&rcpp=10";
 		}
 	}

@@ -62,4 +62,6 @@
 	<!-- /For Pagination Tag -->
 
     <mvc:view-controller path="../example/cmmn/validator.do" view-name="../example/cmmn/validator"/>
+    
 </beans>
+

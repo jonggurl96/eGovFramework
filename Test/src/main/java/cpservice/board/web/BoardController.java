@@ -1,6 +1,7 @@
 package cpservice.board.web;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -84,6 +85,7 @@ public class BoardController {
 	@RequestMapping(value="/paginatedList", method=RequestMethod.GET)
 	public void listPage(@RequestParam("page") int page, 
 			@RequestParam("rcpp") int rcpp, Model model) throws Exception {
+		
 		PaginationInfo pageInfo = new PaginationInfo();
 		pageInfo.setCurrentPageNo(page);
 		pageInfo.setRecordCountPerPage(rcpp);
@@ -96,7 +98,12 @@ public class BoardController {
 		model.addAttribute("list", service.getList(pageInfo.getFirstRecordIndex(), rcpp));
 	}
 	
-//	@RequestMapping(value="/paginatedList", method=RequestMethod.POST)
-//	public String
+	@RequestMapping("/board/home")
+	public String home(HttpServletRequest request) throws Exception {
+		if(request.getSession().getAttribute("id") != null) {
+			return "redirect:/board/paginatedList?page=1&rcpp=10";
+		}
+		return "redirect:/user/login";
+	}
 	
 }
