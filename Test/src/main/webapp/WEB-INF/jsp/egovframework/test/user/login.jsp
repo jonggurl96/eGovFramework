@@ -6,12 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script>
-let msg = "${msg}";
-if(msg != "") {
-	alert(msg);
-}
-</script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
 $(document).ready(function() {
@@ -31,7 +25,7 @@ $(document).ready(function() {
 	<div class="login-logo">
 		<div><h1><span><spring:message code="label.login"/></span></h1></div>
 	</div>
-	<form class="login-info-box" method="post">
+	<form class="login-info-box" method="post" action="/user/loginPost">
 		<div class="id-box">
 			<span><spring:message code="label.id"/></span>
 			<input type="text" name="id" placeholder=<spring:message code="label.id.placeholder"/>>

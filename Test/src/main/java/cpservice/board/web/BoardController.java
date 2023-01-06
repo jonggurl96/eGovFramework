@@ -100,7 +100,8 @@ public class BoardController {
 	
 	@RequestMapping("/board/home")
 	public String home(HttpServletRequest request) throws Exception {
-		if(request.getSession().getAttribute("id") != null) {
+		logger.info("home .......");
+		if(request.getSession().getAttribute("loginInfo") != null) {
 			return "redirect:/board/paginatedList?page=1&rcpp=10";
 		}
 		return "redirect:/user/login";

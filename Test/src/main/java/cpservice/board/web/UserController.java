@@ -1,11 +1,11 @@
 package cpservice.board.web;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -25,21 +25,21 @@ public class UserController {
 	
 	@RequestMapping(value="login", method=RequestMethod.GET)
 	public void login() throws Exception {
-		logger.info("move to login page");
+		logger.info("move to login page .......");
 	}
 	
-	@RequestMapping(value="login", method=RequestMethod.POST)
-	public String loginpost(LoginDTO dto, RedirectAttributes rttr, HttpServletRequest request) throws Exception {
-		UserVO vo = service.login(dto);
-		logger.info("login " + vo);
-		if(vo == null) {
-			rttr.addFlashAttribute("msg", "로그인 실패");
-			return "redirect:/user/login";
-		}
-		else {
-			return "redirect:/board/paginatedList?page=1&rcpp=10";
-		}
-	}
+//	@RequestMapping(value="login", method=RequestMethod.POST)
+//	public String loginpost(LoginDTO dto, RedirectAttributes rttr, HttpServletRequest request) throws Exception {
+//		UserVO vo = service.login(dto);
+//		logger.info("login " + vo);
+//		if(vo == null) {
+//			rttr.addFlashAttribute("msg", "로그인 실패");
+//			return "redirect:/user/login";
+//		}
+//		else {
+//			return "redirect:/board/paginatedList?page=1&rcpp=10";
+//		}
+//	}
 	
 	@RequestMapping(value="regist")
 	public void regist() throws Exception {
@@ -59,6 +59,13 @@ public class UserController {
 		
 		return "redirect:/user/regist";
 		
+	}
+	
+	@RequestMapping(value="loginPost", method=RequestMethod.POST)
+	public void loginpost(LoginDTO dto, Model model) throws Exception {
+		UserVO vo = service.login(dto);
+		logger.info("login " + vo);
+		model.addAttribute("loginInfo", vo);
 	}
 
 }

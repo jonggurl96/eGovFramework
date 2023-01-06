@@ -63,5 +63,12 @@
 
     <mvc:view-controller path="../example/cmmn/validator.do" view-name="../example/cmmn/validator"/>
     
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/user/loginPost" />
+            <bean id="loginInterceptor" class="cpservice.board.interceptor.LoginInterceptor"></bean>
+        </mvc:interceptor>
+	</mvc:interceptors>
+    
 </beans>
 
