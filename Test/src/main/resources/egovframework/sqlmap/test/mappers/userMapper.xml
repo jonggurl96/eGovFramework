@@ -8,4 +8,9 @@
         from tbl_user
         where id=#{id} and pw=#{pw}
     </select>
+    
+    <insert id="regist">
+        insert into tbl_user
+        values(#{id}, #{pw})
+    </insert>
 </mapper>

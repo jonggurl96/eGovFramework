@@ -23,4 +23,12 @@ public class UserDAOImpl implements UserDAO {
 		return session.selectOne(namespace + ".login", dto);
 	}
 
+	@Override
+	public boolean regist(LoginDTO dto) throws Exception {
+		// TODO Auto-generated method stub
+		int res = session.insert(namespace + ".regist", dto);
+		if(res == 1) return true;
+		return false;
+	}
+
 }
