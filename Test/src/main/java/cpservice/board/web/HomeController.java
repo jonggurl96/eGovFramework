@@ -17,4 +17,9 @@ public class HomeController {
 		logger.info("not member, need to login");
 		return "redirect:/user/login";
 	}
+	
+	@RequestMapping(value="/test", method=RequestMethod.GET)
+	public void ajaxTest() {
+		;
+	}
 }
