@@ -54,6 +54,31 @@ let deleteReply = (rno) => {
 		}
 	});
 }
+let writeReply = () => {
+	let replyer = "${loginInfo.id}";
+	let replytext = $('#writtenReply').val();
+	let bno = "${vo.bno}";
+	$.ajax({
+		type:"post",
+		url:"/replies/",
+		headers: {
+			"Content-Type":"application/json",
+			"X-HTTP-Method-Override": "post"
+		},
+		dataType: "text",
+		data: JSON.stringify({
+			replytext,
+			replyer,
+			bno
+		}),
+		success: function(data) {
+			alert(data);
+			console.log(data);
+			getReplies();
+			$('#writtenReply').val("");
+		}
+	});
+}
 
 var msg = "${msg}";
 if( msg != null && msg != "") {
@@ -104,6 +129,11 @@ if( msg != null && msg != "") {
 	<button type="submit" class="btn btn-warning"><spring:message code="button.modify"/></button>
 	<button type="submit" class="btn btn-danger"><spring:message code="button.delete"/></button>
 	<button type="submit" class="btn btn-primary"><spring:message code="button.list"/></button>
+</div>
+<div class="regist-reply-box">
+	<spring:message code="placeholder.regist.reply" var="placeholder"/>
+	<textarea id="writtenReply" rows="3" placeholder="${placeholder}"></textarea>
+	<button onclick="writeReply();"><spring:message code="reply.submit"/></button>
 </div>
 <div class="replies-box">
 	<ul id="replies"></ul>
