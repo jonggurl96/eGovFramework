@@ -17,6 +17,12 @@
         <property name="webBindingInitializer">
             <bean class="cpservice.cmmn.web.EgovBindingInitializer"/>
         </property>
+        <!-- @ResponseBody application/json으로 변경 -->
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+            </list>
+        </property>
     </bean>
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
         <property name="interceptors">
