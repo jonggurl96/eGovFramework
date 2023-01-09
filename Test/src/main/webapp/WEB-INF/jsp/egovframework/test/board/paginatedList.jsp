@@ -26,7 +26,19 @@ $(document).ready(function() {
 			$(this).attr("selected", "selected");
 		}
 	})
+	
 });
+
+let changeRCPP = (sel) => {
+	
+	let firstBno = $('.td-bno').eq(0).text();
+	let boardIndex = ( ${pageInfo.currentPageNo} - 1) * ${pageInfo.recordCountPerPage} + 1;
+	let newPage = Math.ceil(boardIndex / sel.value);
+	
+	self.location="/board/paginatedList?page=" + newPage + "&rcpp=" + sel.value;
+}
+
+
 </script>
 <head>
 <meta charset="UTF-8">
@@ -47,7 +59,7 @@ $(document).ready(function() {
 	<div class="board-table">
 		<div class="pagination-config" style="align:right; text-align:right">
 			<spring:message code="recordCountPerPage"/>:&nbsp;
-			<select name="rcpp" id="rcpp">
+			<select name="rcpp" id="rcpp" onchange="changeRCPP(this);">
 				<option value=10>10</option>
 				<option value=20>20</option>
 				<option value=30>30</option>
@@ -63,7 +75,7 @@ $(document).ready(function() {
 			
 			<c:forEach items="${list }" var="board">
 				<tr>
-					<td><c:out value="${board.bno }" /></td>
+					<td class="td-bno"><c:out value="${board.bno }" /></td>
 					<td><a href="/board/read?bno=${board.bno }&page=${pageInfo.currentPageNo}&rcpp=${pageInfo.recordCountPerPage}"><c:out value="${board.title }"/></a></td>
 					<td><c:out value="${board.writer }" /></td>
 					<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${board.regdate }"/></td>
