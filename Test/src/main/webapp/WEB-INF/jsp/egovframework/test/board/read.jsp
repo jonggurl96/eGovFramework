@@ -27,7 +27,34 @@ $(document).ready(function() {
 	$(".btn-primary").on("click", function() {
 		self.location = "/board/paginatedList?page=${cri.page}&rcpp=${cri.rcpp}";
 	});
+	
+	getReplies();
 });
+let getReplies = () => {
+	$.ajax({
+		type: "get",
+		url: '/replies/all/${vo.bno}',
+		success: function(data) {
+			let str = "";
+			$(data).each(function() {
+				str += "<li data-rno=" + this.rno + " class='ReplyList'>" + this.rno + ":" + this.replytext;
+				str += "<button onclick='deleteReply("+this.rno+");'><spring:message code='button.delete'/></button></li>";
+			});
+			$('#replies').html(str);
+		}
+	});
+}
+let deleteReply = (rno) => {
+	$.ajax({
+		type: "delete",
+		url: "/replies/" + rno,
+		success: function(data) {
+			alert(data);
+			getReplies();
+		}
+	});
+}
+
 var msg = "${msg}";
 if( msg != null && msg != "") {
 	alert(msg);
@@ -77,6 +104,9 @@ if( msg != null && msg != "") {
 	<button type="submit" class="btn btn-warning"><spring:message code="button.modify"/></button>
 	<button type="submit" class="btn btn-danger"><spring:message code="button.delete"/></button>
 	<button type="submit" class="btn btn-primary"><spring:message code="button.list"/></button>
+</div>
+<div class="replies-box">
+	<ul id="replies"></ul>
 </div>
 </body>
 </html>
