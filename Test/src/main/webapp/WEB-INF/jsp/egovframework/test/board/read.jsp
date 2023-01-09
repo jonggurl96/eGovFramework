@@ -37,14 +37,19 @@ let getReplies = () => {
 		success: function(data) {
 			let str = "";
 			$(data).each(function() {
-				str += "<li data-rno=" + this.rno + " class='ReplyList'>" + this.rno + ":" + this.replytext;
-				str += "<button onclick='deleteReply("+this.rno+");'><spring:message code='button.delete'/></button></li>";
+				str += "<li data-rno=" + this.rno + " class='ReplyList'>" + this.rno + ":" + this.replytext + "---" + this.replyer;
+				str += "<button onclick='deleteReply(" + this.rno + ", &quot;" + this.replyer + "&quot;);'><spring:message code='button.delete'/></button></li>";
 			});
 			$('#replies').html(str);
 		}
 	});
 }
-let deleteReply = (rno) => {
+let deleteReply = (rno, replyer) => {
+	let id = "${loginInfo.id}";
+	if(id != replyer) {
+		alert("작성자만 삭제 가능합니다.");
+		return;
+	}
 	$.ajax({
 		type: "delete",
 		url: "/replies/" + rno,
@@ -54,7 +59,7 @@ let deleteReply = (rno) => {
 		}
 	});
 }
-let writeReply = () => {
+let writeReply = ( ) => {
 	let replyer = "${loginInfo.id}";
 	let replytext = $('#writtenReply').val();
 	let bno = "${vo.bno}";
@@ -67,14 +72,15 @@ let writeReply = () => {
 		},
 		dataType: "text",
 		data: JSON.stringify({
-			replytext,
-			replyer,
-			bno
+			replytext: replytext,
+			replyer: replyer,
+			bno: bno
 		}),
-		success: function(data) {
-			alert(data);
-			console.log(data);
-			getReplies();
+		success: function(msg) {
+			alert(msg);
+			if(msg == "SUCCESS") {
+				getReplies();
+			}
 			$('#writtenReply').val("");
 		}
 	});
