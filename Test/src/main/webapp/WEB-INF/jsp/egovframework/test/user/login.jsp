@@ -16,6 +16,10 @@ $(document).ready(function() {
 		self.location="/user/regist";
 	});
 });
+var msg = "${msg}";
+if(msg){
+	alert(msg);
+}
 </script>
 </head>
 <body>

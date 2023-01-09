@@ -31,6 +31,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		if(loginInfo == null) {
 			logger.info("login failed");
 			model.addAttribute("msg", "로그인 실패");
+			modelAndView.setViewName("redirect:/user/login");
+			
 		} else {
 			logger.info("login success .......");
 			session.setAttribute("loginInfo", loginInfo);

@@ -29,10 +29,11 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="loginPost", method=RequestMethod.POST)
-	public void loginpost(LoginDTO dto, Model model) throws Exception {
+	public String loginpost(LoginDTO dto, Model model) throws Exception {
 		UserVO vo = service.login(dto);
 		logger.info("login " + vo);
 		model.addAttribute("loginInfo", vo);
+		return "redirect:/board/paginatedList?page=1&rcpp=10";
 	}
 	
 	@RequestMapping(value="regist")
@@ -56,8 +57,9 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="logout")
-	public void logout(Model model) throws Exception {
-		model.addAttribute("msg", "로그아웃 되었습니다.");
+	public String logout(RedirectAttributes rttr) throws Exception {
+		rttr.addFlashAttribute("msg", "로그아웃 되었습니다.");
+		return "redirect:/user/login";
 	}
 
 }
