@@ -65,4 +65,17 @@ public class BoardDAOImpl implements BoardDAO {
 		return session.selectList(namespace + ".paginatedList", map);
 	}
 
+	@Override
+	public List<BoardVO> searchWithPage(String tag, String keyword, int start, int rcpp) throws Exception {
+		// TODO Auto-generated method stub
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("start", start);
+		map.put("rcpp", rcpp);
+		map.put("tag", tag);
+		map.put("keyword", keyword);
+		return session.selectList(namespace + ".search", map);
+	}
+	
+	
+
 }

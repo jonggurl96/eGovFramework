@@ -71,4 +71,12 @@ public class BoardServiceTest {
 			logger.info("bno: " + vo.getBno());
 		}
 	}
+	
+	@Test
+	public void searchTest() throws Exception {
+		List<BoardVO> list = service.getList("writer", "user00", 20, 10);
+		for(BoardVO vo : list) {
+			logger.info("bno: " + vo.getBno());
+		}
+	}
 }

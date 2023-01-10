@@ -41,4 +41,12 @@
         limit #{start}, #{rccp}
     </select>
     
+    <select id="search" resultType="boardvo" parameterType="hashMap">
+        select bno, title, content, writer, regdate
+        from tbl_board
+        where ${tag} like concat('%', #{keyword}, '%')
+        order by bno desc
+        limit #{start}, #{rcpp}
+    </select>
+    
 </mapper>

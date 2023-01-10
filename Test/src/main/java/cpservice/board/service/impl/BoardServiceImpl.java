@@ -58,4 +58,10 @@ public class BoardServiceImpl implements BoardService {
 		return dao.getListWithPage(start, rcpp);
 	}
 
+	@Override
+	public List<BoardVO> getList(String tag, String keyword, int start, int rcpp) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.searchWithPage(tag, keyword, start, rcpp);
+	}
+
 }

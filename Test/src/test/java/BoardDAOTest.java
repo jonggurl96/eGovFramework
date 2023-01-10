@@ -29,6 +29,15 @@ public class BoardDAOTest {
 	}
 	
 	@Test
+	public void search() throws Exception {
+		logger.info("search() .......");
+		List<BoardVO> list = dao.searchWithPage("title", "itl", 0, 1);
+		for(BoardVO vo : list) {
+			logger.info(vo.toString());
+		}
+	}
+	
+	@Test
 	public void update() throws Exception {
 		BoardVO vo = new BoardVO();
 		vo.setTitle("updated title");
