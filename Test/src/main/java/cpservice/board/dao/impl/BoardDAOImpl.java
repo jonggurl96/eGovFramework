@@ -69,13 +69,20 @@ public class BoardDAOImpl implements BoardDAO {
 	public List<BoardVO> searchWithPage(String tag, String keyword, int start, int rcpp) throws Exception {
 		// TODO Auto-generated method stub
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("start", start);
-		map.put("rcpp", rcpp);
 		map.put("tag", tag);
 		map.put("keyword", keyword);
+		map.put("start", start);
+		map.put("rcpp", rcpp);
 		return session.selectList(namespace + ".search", map);
 	}
-	
-	
 
+	@Override
+	public int getCountSearched(String tag, String keyword) throws Exception {
+		// TODO Auto-generated method stub
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("tag", tag);
+		map.put("keyword", keyword);
+		return session.selectOne(namespace + ".countSearchList", map);
+	}
+	
 }

@@ -6,6 +6,7 @@ public class BoardVO {
 	
 	private int bno;
 	private String title, content, writer;
+	
 	private Date regdate;
 	
 	public int getBno() {

@@ -38,6 +38,13 @@ let changeRCPP = (sel) => {
 	self.location="/board/paginatedList?page=" + newPage + "&rcpp=" + sel.value;
 }
 
+let searchKeyword = () => {
+	let tag = $('#tag').val();
+	let keyword = $('#keyword').val();
+	let rcpp = $('#rcpp').val();
+	
+	self.location="/board/search?tag=" + tag + "&keyword=" + keyword + "&rcpp=" + rcpp;
+}
 
 </script>
 <head>
@@ -57,32 +64,44 @@ let changeRCPP = (sel) => {
 	</div> <!-- /.div-body-header -->
 	
 	<div class="board-table">
-		<div class="pagination-config" style="align:right; text-align:right">
-			<spring:message code="recordCountPerPage"/>:&nbsp;
-			<select name="rcpp" id="rcpp" onchange="changeRCPP(this);">
-				<option value=10>10</option>
-				<option value=20>20</option>
-				<option value=30>30</option>
-			</select>
+		<div class="board-help-box" style="background:#555555; margin:auto">
+			<div class="search-box" style="align:left; text-align:left;float:left">
+				<select name="tag" id="tag">
+					<option value="title"><spring:message code="board.title"/></option>
+					<option value="content"><spring:message code="board.content"/></option>
+					<option value="writer"><spring:message code="board.writer"/></option>
+				</select>
+				<input id="keyword" type="text" placeholder="<spring:message code='placeholder.search'/>">
+				<button onclick="searchKeyword();"><spring:message code="button.search"/></button>
+			</div>
+			<div class="pagination-config" style="align:right; text-align:right;float:right">
+				<spring:message code="recordCountPerPage"/>:&nbsp;
+				<select name="rcpp" id="rcpp" onchange="changeRCPP(this);">
+					<option value=10>10</option>
+					<option value=20>20</option>
+					<option value=30>30</option>
+				</select>
+			</div>
 		</div>
-		<table>
-			<tr>
-				<th><spring:message code="board.bno" /></th>
-				<th><spring:message code="board.title" /></th>
-				<th><spring:message code="board.writer" /></th>
-				<th><spring:message code="board.regdate" /></th>
-			</tr>
-			
-			<c:forEach items="${list }" var="board">
+		<div style="clear:both;background:#ffff99">
+			<table>
 				<tr>
-					<td class="td-bno"><c:out value="${board.bno }" /></td>
-					<td><a href="/board/read?bno=${board.bno }&page=${pageInfo.currentPageNo}&rcpp=${pageInfo.recordCountPerPage}"><c:out value="${board.title }"/></a></td>
-					<td><c:out value="${board.writer }" /></td>
-					<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${board.regdate }"/></td>
+					<th><spring:message code="board.bno" /></th>
+					<th><spring:message code="board.title" /></th>
+					<th><spring:message code="board.writer" /></th>
+					<th><spring:message code="board.regdate" /></th>
 				</tr>
-			</c:forEach>
-			
-		</table>
+				
+				<c:forEach items="${list }" var="board">
+					<tr>
+						<td class="td-bno"><c:out value="${board.bno }" /></td>
+						<td><a href="/board/read?bno=${board.bno }&page=${pageInfo.currentPageNo}&rcpp=${pageInfo.recordCountPerPage}"><c:out value="${board.title }"/></a></td>
+						<td><c:out value="${board.writer }" /></td>
+						<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${board.regdate }"/></td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
 	</div> <!-- /.board-table -->
 	
 	<div class="board-pagination">

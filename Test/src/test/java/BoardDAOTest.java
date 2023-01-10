@@ -31,7 +31,7 @@ public class BoardDAOTest {
 	@Test
 	public void search() throws Exception {
 		logger.info("search() .......");
-		List<BoardVO> list = dao.searchWithPage("title", "itl", 0, 1);
+		List<BoardVO> list = dao.searchWithPage("title", "itl", 1, 10);
 		for(BoardVO vo : list) {
 			logger.info(vo.toString());
 		}

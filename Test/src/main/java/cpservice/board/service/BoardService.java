@@ -24,4 +24,6 @@ public interface BoardService {
 	public List<BoardVO> getList(int start, int rcpp) throws Exception;
 	
 	public List<BoardVO> getList(String tag, String keyword, int start, int rcpp) throws Exception;
+	
+	public int getCountSearched(String tag, String keyword) throws Exception;
 }

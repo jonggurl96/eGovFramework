@@ -102,9 +102,23 @@ public class BoardController {
 	public String home(HttpServletRequest request) throws Exception {
 		logger.info("home .......");
 		if(request.getSession().getAttribute("loginInfo") != null) {
-			return "redirect:/board/paginatedList?page=1&rcpp=10";
+			return "redirect:/board/SPList?page=1&rcpp=10";
 		}
 		return "redirect:/user/login";
+	}
+	
+	@RequestMapping("/SPList")
+	public void splist(@RequestParam("page") int page, 
+			@RequestParam("rcpp") int rcpp, Model model, HttpServletRequest request) throws Exception{
+		logger.info("SPList ......");
+		PaginationInfo pageInfo = new PaginationInfo();
+		pageInfo.setCurrentPageNo(page);
+		pageInfo.setRecordCountPerPage(rcpp);
+		pageInfo.setPageSize(Integer.parseInt(pageSize));
+		pageInfo.setTotalRecordCount(service.getCount());
+		
+		logger.info("SPList pageInfo page = " + pageInfo.getCurrentPageNo());
+		model.addAttribute("pageInfo", pageInfo);
 	}
 	
 }

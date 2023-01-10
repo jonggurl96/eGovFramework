@@ -33,7 +33,7 @@ public class UserController {
 		UserVO vo = service.login(dto);
 		logger.info("login " + vo);
 		model.addAttribute("loginInfo", vo);
-		return "redirect:/board/paginatedList?page=1&rcpp=10";
+		return "redirect:/board/SPList?page=1&rcpp=10";
 	}
 	
 	@RequestMapping(value="regist")

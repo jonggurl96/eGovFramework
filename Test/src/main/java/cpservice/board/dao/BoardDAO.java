@@ -29,4 +29,6 @@ public interface BoardDAO {
 	
 	public List<BoardVO> searchWithPage(String tag, String keyword, int start, int rcpp) throws Exception;
 	
+	public int getCountSearched(String tag, String keyword) throws Exception;
+	
 }

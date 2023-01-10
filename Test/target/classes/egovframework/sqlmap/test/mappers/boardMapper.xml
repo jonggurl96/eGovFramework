@@ -49,4 +49,9 @@
         limit #{start}, #{rcpp}
     </select>
     
+    <select id="countSearchList" parameterType="hashMap" resultType="int">
+        select count(*) from tbl_board
+        where ${tag} like concat('%', #{keyword}, '%')
+    </select>
+    
 </mapper>

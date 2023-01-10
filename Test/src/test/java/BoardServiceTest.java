@@ -74,9 +74,16 @@ public class BoardServiceTest {
 	
 	@Test
 	public void searchTest() throws Exception {
-		List<BoardVO> list = service.getList("writer", "user00", 20, 10);
+		List<BoardVO> list = service.getList("writer", "user00", 0, 10);
 		for(BoardVO vo : list) {
 			logger.info("bno: " + vo.getBno());
 		}
 	}
+	
+	@Test
+	public void searchedCountTest() throws Exception {
+		int res = service.getCountSearched("writer", "jonggurl96");
+		logger.info(Integer.toString(res));
+	}
+	
 }

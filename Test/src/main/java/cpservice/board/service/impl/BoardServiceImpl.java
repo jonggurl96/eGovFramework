@@ -64,4 +64,10 @@ public class BoardServiceImpl implements BoardService {
 		return dao.searchWithPage(tag, keyword, start, rcpp);
 	}
 
+	@Override
+	public int getCountSearched(String tag, String keyword) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.getCountSearched(tag, keyword);
+	}
+
 }
