@@ -12,7 +12,6 @@ $(document).ready(function() {
 		form.submit();
 	});
 	$(".btn-danger").on("click", function() {
-		console.log("/board/read?bno=${vo.bno}&page=${cri.page}&rcpp=${cri.rcpp}");
 		self.location = "/board/read?bno=${vo.bno}&page=${cri.page}&rcpp=${cri.rcpp}";
 	});
 });

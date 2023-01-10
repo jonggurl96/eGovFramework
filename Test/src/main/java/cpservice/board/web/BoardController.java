@@ -66,7 +66,7 @@ public class BoardController {
 		logger.info("Remove content where bno = " + cri.getBno());
 		service.remove(cri.getBno());
 		rttr.addFlashAttribute("msg", "삭제되었습니다.");
-		return "redirect:/board/paginatedList?page=" + cri.getPage() + "&rcpp=" + cri.getRcpp();
+		return "redirect:/board/SPList?page=" + cri.getPage() + "&rcpp=" + cri.getRcpp();
 	}
 	
 	@RequestMapping(value="/regist", method=RequestMethod.GET)
@@ -79,7 +79,7 @@ public class BoardController {
 		logger.info("Regist content: " + vo);
 		service.regist(vo);
 		rttr.addFlashAttribute("msg", "글이 등록되었습니다.");
-		return "redirect:/board/paginatedList?page=1&rcpp=10";
+		return "redirect:/board/SPList?page=1&rcpp=10";
 	}
 	
 	@RequestMapping(value="/paginatedList", method=RequestMethod.GET)

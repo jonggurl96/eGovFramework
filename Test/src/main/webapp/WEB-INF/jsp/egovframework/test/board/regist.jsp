@@ -11,7 +11,7 @@ $(document).ready(function() {
 		form.submit();
 	});
 	$(".btn-danger").on("click", function() {
-		self.location = "/board/paginatedList?page=1&rcpp=10";
+		self.location = "/board/SPList?page=1&rcpp=10";
 	});
 });
 </script>

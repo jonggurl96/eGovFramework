@@ -25,7 +25,7 @@ $(document).ready(function() {
 		form.submit();
 	});
 	$(".btn-primary").on("click", function() {
-		self.location = "/board/paginatedList?page=${cri.page}&rcpp=${cri.rcpp}";
+		self.location = "/board/SPList?page=${cri.page}&rcpp=${cri.rcpp}";
 	});
 	
 	getReplies();
