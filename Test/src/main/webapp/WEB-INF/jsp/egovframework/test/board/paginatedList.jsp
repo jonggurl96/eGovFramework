@@ -89,7 +89,7 @@ let changeRCPP = (sel) => {
 		<!-- pagination -->
 		<div id="paging">
         	<ui:pagination paginationInfo = "${pageInfo}" type="image" jsFunction="otherPage" />
-        	<input type="hidden" name="page">
+        	<!-- <input type="hidden" name="page"> -->
         </div>
 	</div> <!-- board-pagination -->
 	
