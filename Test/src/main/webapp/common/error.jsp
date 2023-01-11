@@ -14,6 +14,7 @@
 pageInfo.recordCountPerPage = ${pageInfo.recordCountPerPage }<br></br>
 pageInfo.currentPageNo = ${pageInfo.currentPageNo }<br></br>
 pageInfo.pageSize = ${pageInfo.pageSize }<br></br>
+request.contextpath = <%= request.getContextPath() %>
 
     <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>

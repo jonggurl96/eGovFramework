@@ -7,122 +7,17 @@
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui" %>
 <!DOCTYPE html>
 <html>
-<script type="text/javascript">
-var msg = "${msg}";
-if (msg != null && msg != "") {
-	alert(msg);
-}
-</script>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script type="text/javascript">
-
-let getDate = (num) => {
-	let date = new Date(num);
-	
-	let month = date.getMonth() + 1;
-	let day = date.getDate();
-	let hours = date.getHours();
-	let minutes = date.getMinutes();
-	
-	month = month < 10 ? "0" + month : month;
-	day = day < 10 ? "0" + day : day;
-	hours = hours < 10 ? "0" + hours : hours;
-	minutes = minutes < 10 ? "0" + minutes : minutes;
-
-	return date.getFullYear() + "-" + month + "-" + day + " " + hours + ":" + minutes;
-}
-
-let downloadPage = function (tag, keyword, page, rcpp) {
-	
-	let data = {
-			"page": page,
-			"rcpp": rcpp,
-			"totalRecordCount": ${pageInfo.totalRecordCount}
-	};
-	if(tag === "all") {
-		$('#keyword').val("");
-	}
-	else {
-		data["tag"] = tag;
-		data["keyword"] = keyword;
-	}
-	
-	$.ajax({
-		type: "post",
-		url: "/search",
-		contentType: "application/json",
-		dataType: "text",
-		data: JSON.stringify(data),
-		success: function(data) {
-			
-			data = JSON.parse(data);
-			let str = "<tr><th><spring:message code='board.bno' /></th>";
-			str += "<th><spring:message code='board.title' /></th>";
-			str += "<th><spring:message code='board.writer' /></th>";
-			str += "<th><spring:message code='board.regdate' /></th></tr>";
-			
-			data.forEach(element => {
-				let href = "/board/read?bno=" + element["bno"] + "&page=${pageInfo.currentPageNo}&rcpp=${pageInfo.recordCountPerPage}";
-				str += "<tr><td class='td-bno'>" + element["bno"] + "</td>";
-				str += "<td><a href=" + href + ">" + element["title"] + "</a></td>";
-				str += "<td>" + element["writer"] + "</td>";
-				str += "<td>" + getDate(element["regdate"]) + "</td>";
-			});
-			$('#table-board').html(str);
-		}
-	});
-}
-
-$(document).ready(function() {
-	$('select option').each(function() {
-		if($(this).val() == "${pageInfo.recordCountPerPage}") {
-			$(this).attr("selected", "selected");
-		}
-	});
-	let tag = $('#tag').val();
-	let keyword = $('#keyword').val();
-	let rcpp = $('#rcpp').val();
-	let pageNo = $('#paging strong').text();
-	downloadPage(tag, keyword, pageNo, rcpp);
-	
-});
-
-let redirect = (tag, keyword, pageNo, rcpp) => {
-	let redirectURL = "/board/SPList?page=" + pageNo + "&rcpp=" + rcpp;
-	if(!(tag === "all")) {
-		redirectURL += "&tag=" + tag + "&keyword=" + keyword;
-	}
-	self.location = redirectURL;
-}
-
-function otherPage(pageNo) {
-	let tag = $('#tag').val();
-	let keyword = $('#keyword').val();
-	let rcpp = $('#rcpp').val();
-	console.log(pageNo);
-	
-	redirect(tag, keyword, pageNo, rcpp);
-}
-
-let searchKeyword = () => {
-	otherPage(1);
-}
-
-let changeRCPP = (sel) => {
-	
-	let boardIndex = ( ${pageInfo.currentPageNo} - 1) * ${pageInfo.recordCountPerPage} + 1;
-	let newPage = Math.ceil(boardIndex / sel.value);
-	
-	let tag = $('#tag').val();
-	let keyword = $('#keyword').val();
-	
-	redirect(tag, keyword, newPage, sel.value);
-}
-
-</script>
 <head>
-<meta charset="UTF-8">
-<title><spring:message code="title.list" /></title>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script defer>
+		let msg = "${msg}";
+		if (msg != null && msg != "") {
+			alert(msg);
+		}
+	</script>
+	<script defer src="/js/SPList.js"></script>
+	<meta charset="UTF-8">
+	<title><spring:message code="title.list" /></title>
 </head>
 <body>
 
@@ -155,6 +50,7 @@ let changeRCPP = (sel) => {
 					<option value=20>20</option>
 					<option value=30>30</option>
 				</select>
+				<input type="hidden" id="pre_rcpp" value=10>
 			</div>
 		</div>
 		<div style="clear:both;background:#ffff99">
@@ -169,6 +65,7 @@ let changeRCPP = (sel) => {
 		<div id="paging">
 			<ui:pagination paginationInfo = "${pageInfo}" type="image" jsFunction="otherPage" />
         </div>
+        <input type="hidden" id="totalRecordCount" value="${pageInfo.totalRecordCount }">
 	</div> <!-- board-pagination -->
 	
 	<div class="box-footer">

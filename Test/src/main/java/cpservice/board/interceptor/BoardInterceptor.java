@@ -9,9 +9,9 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import cpservice.board.domain.UserVO;
 
-public class ReadAuthInterceptor extends HandlerInterceptorAdapter {
+public class BoardInterceptor extends HandlerInterceptorAdapter {
 
-	private static final Logger logger = LoggerFactory.getLogger(ReadAuthInterceptor.class);
+	private static final Logger logger = LoggerFactory.getLogger(BoardInterceptor.class);
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -20,12 +20,12 @@ public class ReadAuthInterceptor extends HandlerInterceptorAdapter {
 		
 		Object vo = request.getSession().getAttribute("loginInfo");
 		if(vo == null) {
-			logger.info("로그인 없이 조회 시도");
+			logger.info("비회원 접근");
 			response.sendRedirect("/user/login");
 			return false;
 		}
 		String id = ((UserVO)vo).getId();
-		logger.info(id + " read content");
+		logger.info(id + " access......: " + request.getRequestURL());
 		return true;
 	}
 	
