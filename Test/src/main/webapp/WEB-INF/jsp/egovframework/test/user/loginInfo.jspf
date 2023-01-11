@@ -5,7 +5,7 @@
 
 <div class="login-info-box" style="border:solid;border-color:#ffff99;width:100%;overflow:hidden">
 	<div class="login-info" style="float:left;padding:3px">
-		<img src="/resources/test/images/user/profile.jpg" style="border-radius:50%">
+		<img src="/images/test/user/profile.jpg" style="border-radius:50%;width:36px;height:36px">
 		<strong id="login-id">${loginInfo.id }</strong>
 	</div>
 	<!-- /.login-info -->

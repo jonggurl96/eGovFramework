@@ -84,7 +84,7 @@
         </mvc:interceptor> -->
 	</mvc:interceptors>
 	
-    <mvc:resources location="/resources/" mapping="/resources/**"/>
+    <mvc:resources location="/images/" mapping="/images/**"/>
 	
 </beans>
 
