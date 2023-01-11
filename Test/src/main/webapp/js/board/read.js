@@ -82,9 +82,7 @@ let writeReply = () => {
 		}),
 		success: function(msg) {
 			alert(msg);
-			if(msg == "SUCCESS") {
-				getReplies();
-			}
+			getReplies();
 			$('#writtenReply').val("");
 		}
 	});

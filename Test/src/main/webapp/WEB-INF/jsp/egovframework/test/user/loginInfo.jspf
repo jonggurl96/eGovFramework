@@ -11,7 +11,7 @@
 	<!-- /.login-info -->
 	<div class="logout-button" style="float:right">
 		<form action="/user/logout">
-			<button><spring:message code="label.logout"/></button>
+			<button style="margin:10px"><spring:message code="label.logout"/></button>
 		</form>
 	</div>
 	<!-- /.logout-button -->

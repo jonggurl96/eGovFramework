@@ -230,4 +230,65 @@ public void afterCompletion(request, response, handler, exception) throws Except
     </list>
 </property>
 ```
+
+# Property
+## *.properties 파일
+> K=V의 형태로 저장된 파일<br>
+> bean으로 사용할 객체 생성
+```
+import org.springframework.beans.factory.config.PropertiesFactoryBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
+
+@Configuration
+public class PropertyConfig {
+
+    @Bean(name="propertyConfigBean")
+    public PropertiesFactoryBean propertiesFactoryBean() throws Exception {
+        PropertiesFactoryBean pfb = new PropertiesFactoryBean();
+        ClassPathResource cpr = new ClassPathResource("*.properties path");
+        pfb.setLocation(cpr);
+        return pfb;
+    }
+}
+```
+> 실제 사용 예시
+```
+@Value("#{pageConfigBean['K']}")
+private String pageSize;
+```
+## context-properties.xml 파일
+> propertiesService properties에 아래 코드 추가
+```
+<entry key="K" value="V"/>
+```
+> 1. jsp에서 사용 시 아래처럼 사용
+```
+<spring:eval expression="@propertiesService.getString('K')" var="delButton"/>
+<c:out value="${delButton}"/>
+```
+> 2. java에서 사용 시 아래처럼 사용
+```
+@Resource(name = "propertiesService")
+protected EgovPropertyService propertiesService;
+
+propertiesService.getString("K");
+propertiesService.getInt("K");
+propertiesService.getBoolean("K");
+.
+.
+.
+```
+
+# Resource mapping 정적 자원 매핑
+> dispatcher-servlet.xml
+```
+<mvc:resources location="" mapping="" />
+/**
+ * location: 실제 자원의 위치("src/main/webapp의 하위 경로")
+ * mapping: url(root Path/url)
+ */
+```
+
 # AJAX
