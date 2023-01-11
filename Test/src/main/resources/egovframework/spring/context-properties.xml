@@ -7,6 +7,9 @@
 	        <map>
 	        	<entry key="pageUnit" value="10"/>
 	        	<entry key="pageSize" value="10"/>
+	        	
+	        	<entry key="delButton" value="삭제"/>
+	        	
 	        </map>
 		</property>
 	</bean>

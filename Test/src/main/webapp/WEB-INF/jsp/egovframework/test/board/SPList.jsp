@@ -8,20 +8,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="http://code.jquery.com/jquery-latest.js"></script>
-	<script defer>
-		let msg = "${msg}";
-		if (msg != null && msg != "") {
-			alert(msg);
-		}
-	</script>
-	<script defer src="/js/SPList.js"></script>
+	<script defer src="http://code.jquery.com/jquery-latest.js"></script>
+	<script defer src="/js/board/SPList.js"></script>
+	<script defer src="/js/notice.js"></script>
 	<meta charset="UTF-8">
 	<title><spring:message code="title.list" /></title>
 </head>
 <body>
-
-<%@ include file="../user/logout_banner.jspf" %>
+<input type="hidden" id="hidden_msg" value="${msg}">
+<%@ include file="../user/loginInfo.jspf" %>
 
 <div class="div-body" style="align:center; height:800px background-color:#ffffff">
 	<div class="div-body-header" style="text-align:center; background-color:aqua">
@@ -55,6 +50,12 @@
 		</div>
 		<div style="clear:both;background:#ffff99">
 			<table id="table-board">
+				<tr class="not-removable">
+					<th><spring:message code='board.bno' /></th>
+					<th><spring:message code='board.title' /></th>
+					<th><spring:message code='board.writer' /></th>
+					<th><spring:message code='board.regdate' /></th>
+				</tr>
 				<!-- <script> downloadPage()...... </script> -->				
 			</table>
 		</div>

@@ -4,27 +4,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script>
-let msg = "${msg}";
-if(msg != "") {
-	alert(msg);
-}
-</script>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script>
-$(document).ready(function() {
-	$('.submit-btn-box input').on("click", function() {
-		$('.login-info-box').submit();
-	});
-	$('.cancel-btn-box input').on("click", function() {
-		self.location="/user/login";
-	});
-});
-</script>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script defer src="http://code.jquery.com/jquery-latest.js"></script>
+	<script defer src="/js/user/regist.js"></script>
+	<script defer src="/js/notice.js"></script>
 </head>
 <body>
+<input type="hidden" id="hidden_msg" value="${msg }">
 <div class="home-logo">
 </div>
 <div class="home-login-box" style="align:center;text-align:center">

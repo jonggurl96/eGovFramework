@@ -2,26 +2,16 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script>
-$(document).ready(function() {
-	var form = $("form[role='form']");
-	$(".btn-primary").on("click", function() {
-		form.attr("action", "/board/regist");
-		form.submit();
-	});
-	$(".btn-danger").on("click", function() {
-		self.location = "/board/SPList?page=1&rcpp=10";
-	});
-});
-</script>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title><spring:message code="title.write" /></title>
+	<meta charset="UTF-8">
+	<script defer src="http://code.jquery.com/jquery-latest.js"></script>
+	<script defer src="/js/board/regist.js"></script>
+	<title><spring:message code="title.write" /></title>
 </head>
 <body>
+<%@ include file="../user/loginInfo.jspf" %>
 <form role="form" method="post">
 	<input type="text" name="title" placeholder="Enter Title" >
 	<textarea name="content" rows="3" placeholder="Enter Content"></textarea>

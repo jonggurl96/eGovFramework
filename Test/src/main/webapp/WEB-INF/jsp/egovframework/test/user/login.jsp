@@ -6,23 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script>
-$(document).ready(function() {
-	$('.login-btn-box input').on("click", function() {
-		$('.login-info-box').submit();
-	});
-	$('.regist-btn-box input').on("click", function() {
-		self.location="/user/regist";
-	});
-});
-var msg = "${msg}";
-if(msg){
-	alert(msg);
-}
-</script>
+<script defer src="http://code.jquery.com/jquery-latest.js"></script>
+<script defer src="/js/user/login.js"></script>
+<script defer src="/js/notice.js"></script>
 </head>
 <body>
+<input type="hidden" id="hidden_msg" value="${msg}">
 <div class="home-logo">
 </div>
 <div class="home-login-box" style="align:center;text-align:center">

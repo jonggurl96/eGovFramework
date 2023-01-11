@@ -3,31 +3,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %> 
-<script src="http://code.jquery.com/jquery-latest.js"></script>   
-<script>
-$(document).ready(function() {
-	var form = $("form[role='form']");
-	$(".btn-primary").on("click", function() {
-		form.attr("action", "/board/modify");
-		form.submit();
-	});
-	$(".btn-danger").on("click", function() {
-		self.location = "/board/read?bno=${vo.bno}&page=${cri.page}&rcpp=${cri.rcpp}";
-	});
-});
-</script>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title><spring:message code="title.modify"/></title>
+	<meta charset="UTF-8">
+	<script defer src="http://code.jquery.com/jquery-latest.js"></script>   
+	<script defer src="/js/board/modify.js"></script>
+	<title><spring:message code="title.modify"/></title>
 </head>
 <body>
+<%@ include file="../user/loginInfo.jspf" %>
 <form role="form" method="post">
-	<input type="hidden" value="${cri.page}" name="page"/>
-	<input type="hidden" value="${cri.rcpp}" name="rcpp"/>
+	<input type="hidden" value="${cri.page}" name="page" id="page"/>
+	<input type="hidden" value="${cri.rcpp}" name="rcpp" id="rcpp"/>
 	<div>
-		<spring:message code="board.bno"/><input type="text" name="bno" value="${vo.bno}" readonly="readonly">
+		<spring:message code="board.bno"/><input type="text" name="bno" value="${vo.bno}" readonly="readonly" id="bno">
 	</div>
 	<div>
 		<spring:message code="board.title"/><input type="text" name="title" value="${vo.title}" >
