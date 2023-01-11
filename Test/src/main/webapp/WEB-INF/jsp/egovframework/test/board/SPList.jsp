@@ -33,29 +33,36 @@ let getDate = (num) => {
 }
 
 let downloadPage = function (tag, keyword, page, rcpp) {
+	
+	let data = {
+			"page": page,
+			"rcpp": rcpp,
+			"totalRecordCount": ${pageInfo.totalRecordCount}
+	};
+	if(tag === "all") {
+		$('#keyword').val("");
+	}
+	else {
+		data["tag"] = tag;
+		data["keyword"] = keyword;
+	}
+	
 	$.ajax({
 		type: "post",
 		url: "/search",
 		contentType: "application/json",
 		dataType: "text",
-		data: JSON.stringify({
-			"page": page,
-			"rcpp": rcpp,
-			"tag": tag,
-			"keyword": keyword
-		}),
+		data: JSON.stringify(data),
 		success: function(data) {
-			data = JSON.parse(data);
-			let pageInfo = data["pageInfo"];
-			data = data["list"];
 			
+			data = JSON.parse(data);
 			let str = "<tr><th><spring:message code='board.bno' /></th>";
 			str += "<th><spring:message code='board.title' /></th>";
 			str += "<th><spring:message code='board.writer' /></th>";
 			str += "<th><spring:message code='board.regdate' /></th></tr>";
 			
 			data.forEach(element => {
-				let href = "/board/read?bno=" + element["bno"] + "&page=" + pageInfo.currentPageNo + "&rcpp=" + pageInfo.recordCountPerPage;
+				let href = "/board/read?bno=" + element["bno"] + "&page=${pageInfo.currentPageNo}&rcpp=${pageInfo.recordCountPerPage}";
 				str += "<tr><td class='td-bno'>" + element["bno"] + "</td>";
 				str += "<td><a href=" + href + ">" + element["title"] + "</a></td>";
 				str += "<td>" + element["writer"] + "</td>";
@@ -75,20 +82,26 @@ $(document).ready(function() {
 	let tag = $('#tag').val();
 	let keyword = $('#keyword').val();
 	let rcpp = $('#rcpp').val();
-	downloadPage(tag, keyword, 1, rcpp);
+	let pageNo = $('#paging strong').text();
+	downloadPage(tag, keyword, pageNo, rcpp);
 	
 });
+
+let redirect = (tag, keyword, pageNo, rcpp) => {
+	let redirectURL = "/board/SPList?page=" + pageNo + "&rcpp=" + rcpp;
+	if(!(tag === "all")) {
+		redirectURL += "&tag=" + tag + "&keyword=" + keyword;
+	}
+	self.location = redirectURL;
+}
 
 function otherPage(pageNo) {
 	let tag = $('#tag').val();
 	let keyword = $('#keyword').val();
 	let rcpp = $('#rcpp').val();
+	console.log(pageNo);
 	
-	if(tag === "all") {
-		$('#keyword').val("");
-	}
-	
-	downloadPage(tag, keyword, pageNo, rcpp);
+	redirect(tag, keyword, pageNo, rcpp);
 }
 
 let searchKeyword = () => {
@@ -103,7 +116,7 @@ let changeRCPP = (sel) => {
 	let tag = $('#tag').val();
 	let keyword = $('#keyword').val();
 	
-	downloadPage(tag, keyword, newPage, sel.value);
+	redirect(tag, keyword, newPage, sel.value);
 }
 
 </script>
@@ -154,8 +167,7 @@ let changeRCPP = (sel) => {
 	<div class="board-pagination">
 		<!-- pagination -->
 		<div id="paging">
-        	<ui:pagination paginationInfo = "${pageInfo}" type="image" jsFunction="otherPage" />
-        	<!-- <input type="hidden" name="page"> -->
+			<ui:pagination paginationInfo = "${pageInfo}" type="image" jsFunction="otherPage" />
         </div>
 	</div> <!-- board-pagination -->
 	

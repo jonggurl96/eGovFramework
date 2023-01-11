@@ -109,15 +109,25 @@ public class BoardController {
 	
 	@RequestMapping("/SPList")
 	public void splist(@RequestParam("page") int page, 
-			@RequestParam("rcpp") int rcpp, Model model, HttpServletRequest request) throws Exception{
+			@RequestParam("rcpp") int rcpp, 
+			@RequestParam(value = "tag", required = false) String tag, 
+			@RequestParam(value = "keyword", required = false) String keyword, Model model) throws Exception{
 		logger.info("SPList ......");
+		logger.info("page: " + page + ", rcpp: " + rcpp);
+		
 		PaginationInfo pageInfo = new PaginationInfo();
 		pageInfo.setCurrentPageNo(page);
 		pageInfo.setRecordCountPerPage(rcpp);
 		pageInfo.setPageSize(Integer.parseInt(pageSize));
-		pageInfo.setTotalRecordCount(service.getCount());
+		if(tag != null) {
+			pageInfo.setTotalRecordCount(service.getCountSearched(tag, keyword));
+		} else {
+			pageInfo.setTotalRecordCount(service.getCount());
+		}
 		
 		logger.info("SPList pageInfo page = " + pageInfo.getCurrentPageNo());
+		logger.info("pageInfo: page, rcpp, totalPageCount");
+		logger.info("" + pageInfo.getCurrentPageNo() + ", " + pageInfo.getRecordCountPerPage() + ", " + pageInfo.getTotalPageCount());
 		model.addAttribute("pageInfo", pageInfo);
 	}
 	
