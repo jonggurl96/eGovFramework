@@ -75,7 +75,7 @@ $(document).ready(function() {
 
 let redirect = (tag, keyword, pageNo, rcpp) => {
 	let redirectURL = "/board/SPList?page=" + pageNo + "&rcpp=" + rcpp;
-	if(!(tag === "all")) {
+	if(!(tag == "all")) {
 		redirectURL += "&tag=" + tag + "&keyword=" + keyword;
 	}
 	self.location = redirectURL;

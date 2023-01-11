@@ -159,9 +159,10 @@ pageInfo.getLastRecordIndex(); // 페이지에 게시될 마지막 레코드 인
 > > property rendererType: Map
 > > > ui:pagination tag의 type
 > > > > image: imageRenderer
-> > > > ```<bean id=imageRenderer class="egovframework.example.sample.web.EgovImgPaginationRenderer"/>```
-
-> 빈 설정이 없거나 type renderer가 없다면 두 클래스가 기본값으로 사용된다.
+> > > > ```
+> > > > <bean id=imageRenderer class="egovframework.example.sample.web.EgovImgPaginationRenderer"/>
+> > > > ```
+> > > 빈 설정이 없거나 type renderer가 없다면 두 클래스가 기본값으로 사용된다.
 > > egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationManager
 > > egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationRenderer
 
