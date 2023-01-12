@@ -1,3 +1,8 @@
+.board-table {
+    width: 50%;
+    margin:auto;
+}
+
 .board-help-box {
     background:#555555;
     margin:auto;
@@ -17,7 +22,9 @@
     clear:both;
     background:#ffff99;
     display:flex;
-    justify-content: space-around;   
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
 }
 
 table {
@@ -45,4 +52,19 @@ td:nth-child(odd) {
     background:#ffffcc;
 }
 
-/* board-table 하위에 3개중 가운데가 table-board와 board-help-box를 갖자 */
+.button-write {
+    display: block;
+    width: 12%;
+    height:15px;
+    background: #4E9CAF;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    line-height: 15px;
+}
+
+.board-pagination {
+	margin: auto;
+}

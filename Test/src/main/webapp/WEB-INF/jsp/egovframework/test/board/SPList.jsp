@@ -11,8 +11,9 @@
 	<script defer src="http://code.jquery.com/jquery-latest.js"></script>
 	<script defer src="/js/board/SPList.js"></script>
 	<script defer src="/js/notice.js"></script>
-    <!-- <link rel="stylesheet" href="/src/main/webapp/css/test/board/SPList.css"> -->
     <link rel="stylesheet" href="/css/test/board/SPList.css">
+    <!-- <link rel="stylesheet" href="/src/main/webapp/css/test/board/SPList.css"> -->
+    <link rel="stylesheet" href="/css/test/user/loginInfo.css">
 	<meta charset="UTF-8">
 	<title><spring:message code="title.list" /></title>
     <!-- <title>글 목록</title> -->
@@ -22,13 +23,6 @@
 <%@ include file="../user/loginInfo.jspf" %>
 
 <div class="div-body">
-	<div class="div-body-header" style="text-align:center; background-color:aqua">
-		<div class="board-title">
-			<h1><span>BOARD<br></span></h1>
-			<h3><span>with eGovFramework</span></h3>
-		</div> <!-- /.board-title -->
-	</div> <!-- /.div-body-header -->
-	
 	<div class="board-table">
 		<div class="board-help-box">
 			<div class="search-box">
@@ -54,7 +48,6 @@
 					<option value=20>20</option>
 					<option value=30>30</option>
 				</select>
-				<input type="hidden" id="pre_rcpp" value=10>
 			</div>
 		</div>
 		<div class="main-table">
@@ -64,8 +57,8 @@
 					<th><spring:message code='board.title' /></th>
 					<th><spring:message code='board.writer' /></th>
 					<th><spring:message code='board.regdate' /></th>
-				</tr>
-				<!-- <tr>
+                </tr>
+                <!-- <tr>
                     <th>bno</th>
 					<th>제목</th>
 					<th>작성자</th>
@@ -89,23 +82,26 @@
                     <td>글 제목</td>
                     <td>user00</td>
                     <td>2023-10-12 10:31</td>
-                </tr> -->				
+                </tr> -->
+
+				<!-- <script> downloadPage()...... </script> -->				
 			</table>
+			
+			<div class="board-pagination">
+				<!-- pagination -->
+				<div id="paging">
+					<ui:pagination paginationInfo = "${pageInfo}" type="image" jsFunction="otherPage" />
+		        </div>
+			</div> <!-- board-pagination -->
+			
 		</div>
         <!-- /.main-table -->
+        <div class="box-footer">
+            <a href="/board/regist" class="button-write"><spring:message code="button.regist" /></a>
+            <!-- <a href="/board/regist" class="button-write">글쓰기</a> -->
+        </div>
 	</div> <!-- /.board-table -->
 	
-	<div class="board-pagination">
-		<!-- pagination -->
-		<div id="paging">
-			<ui:pagination paginationInfo = "${pageInfo}" type="image" jsFunction="otherPage" />
-        </div>
-	</div> <!-- board-pagination -->
-	
-	<div class="box-footer">
-		<a href="/board/regist"><spring:message code="button.regist" /></a>
-        <!-- <a href="/board/regist">글쓰기</a> -->
-	</div>
 	<div class="constants-box">
         <input type="hidden" id="totalRecordCount" value="${pageInfo.totalRecordCount }">
 		<input type="hidden" id="page-constant" value="${pageInfo.currentPageNo }">

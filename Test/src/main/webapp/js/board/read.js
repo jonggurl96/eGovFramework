@@ -41,8 +41,10 @@ let getReplies = () => {
 		success: function(data) {
 			let str = "";
 			$(data).each(function() {
-				str += "<li data-rno=" + this.rno + " class='ReplyList'>" + this.rno + ":" + this.replytext + "---" + this.replyer;
-				str += "<button onclick='deleteReply(" + this.rno + ", &quot;" + this.replyer + "&quot;);'>" + delBtnVal + "</button></li>";
+				str += "<li class='ReplyList'>";
+				str += "<label class='reply-writer' title='" + this.writer + "'>" + this.replyer + "</label>";
+				str += "<label class='reply-text'>" + this.replytext + "</label>";
+				str += "<button class='del-reply-btn' onclick='deleteReply(" + this.rno + ", &quot;" + this.replyer + "&quot;);'>" + delBtnVal + "</button></li>";
 			});
 			$('#replies').html(str);
 		}
