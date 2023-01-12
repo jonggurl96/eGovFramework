@@ -59,14 +59,23 @@ let downloadPage = function (tag, keyword, page, rcpp, totalRecordCount) {
 }
 
 $(document).ready(function() {
-	$('select option').each(function() {
-		if($(this).val() == "${pageInfo.recordCountPerPage}") {
+	$('#rcpp option').each(function() {
+		if($(this).val() == $('#rcpp-constant').val()) {
+			$(this).attr("selected", "selected");
+		}
+	});
+	let rcpp = $('#rcpp').val();
+	
+	$('#tag option').each(function() {
+		if($(this).val() == $('#tag-constant').val()) {
 			$(this).attr("selected", "selected");
 		}
 	});
 	let tag = $('#tag').val();
-	let keyword = $('#keyword').val();
-	let rcpp = $('#rcpp').val();
+	
+	let keyword = $('#keyword-constant').val();
+	$('#keyword').val(keyword);
+	
 	let pageNo = $('#paging strong').text();
 	let totalRecordCount = $('#totalRecordCount').val();
 	downloadPage(tag, keyword, pageNo, rcpp, totalRecordCount);
@@ -97,15 +106,13 @@ let searchKeyword = () => {
 let changeRCPP = (sel) => {
 
 	let currentPageNo = $('#paging strong').text();
-	let preRcpp = $('#currentPageNo').val();
+	let preRcpp = $('#rcpp-constant').val();
 	
 	let boardIndex = ( currentPageNo - 1) * preRcpp + 1;
 	let newPage = Math.ceil(boardIndex / sel.value);
 	
 	let tag = $('#tag').val();
 	let keyword = $('#keyword').val();
-	
-	preRcpp.val(sel.value);
 	
 	redirect(tag, keyword, newPage, sel.value);
 }

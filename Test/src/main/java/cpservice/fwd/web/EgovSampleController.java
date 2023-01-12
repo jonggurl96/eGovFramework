@@ -15,27 +15,27 @@
  */
 package cpservice.fwd.web;
 
-import java.util.List;
-
-import egovframework.rte.fdl.property.EgovPropertyService;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
-
-import javax.annotation.Resource;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.support.SessionStatus;
-import org.springmodules.validation.commons.DefaultBeanValidator;
-
-import cpservice.fwd.service.EgovSampleService;
-import cpservice.fwd.service.SampleDefaultVO;
-import cpservice.fwd.service.SampleVO;
+//import java.util.List;
+//
+//import egovframework.rte.fdl.property.EgovPropertyService;
+//import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+//
+//import javax.annotation.Resource;
+//
+//import org.springframework.stereotype.Controller;
+//import org.springframework.ui.Model;
+//import org.springframework.ui.ModelMap;
+//import org.springframework.validation.BindingResult;
+//import org.springframework.web.bind.annotation.ModelAttribute;
+//import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RequestMethod;
+//import org.springframework.web.bind.annotation.RequestParam;
+//import org.springframework.web.bind.support.SessionStatus;
+//import org.springmodules.validation.commons.DefaultBeanValidator;
+//
+//import cpservice.fwd.service.EgovSampleService;
+//import cpservice.fwd.service.SampleDefaultVO;
+//import cpservice.fwd.service.SampleVO;
 
 /**
  * @Class Name : EgovSampleController.java
@@ -54,7 +54,7 @@ import cpservice.fwd.service.SampleVO;
  *  Copyright (C) by MOPAS All right reserved.
  */
 
-@Controller
+//@Controller
 public class EgovSampleController {
 
 //	/** EgovSampleService */

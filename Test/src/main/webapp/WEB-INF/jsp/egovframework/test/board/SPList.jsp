@@ -66,11 +66,17 @@
 		<div id="paging">
 			<ui:pagination paginationInfo = "${pageInfo}" type="image" jsFunction="otherPage" />
         </div>
-        <input type="hidden" id="totalRecordCount" value="${pageInfo.totalRecordCount }">
 	</div> <!-- board-pagination -->
 	
 	<div class="box-footer">
 		<a href="/board/regist"><spring:message code="button.regist" /></a>
+	</div>
+	<div class="constants-box">
+        <input type="hidden" id="totalRecordCount" value="${pageInfo.totalRecordCount }">
+		<input type="hidden" id="page-constant" value="${pageInfo.currentPageNo }">
+		<input type="hidden" id="rcpp-constant" value="${pageInfo.recordCountPerPage }">
+		<input type="hidden" id="tag-constant" value="${tag }">
+		<input type="hidden" id="keyword-constant" value="${keyword }">
 	</div>
 </div>
 

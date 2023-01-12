@@ -121,8 +121,12 @@ public class BoardController {
 		pageInfo.setPageSize(Integer.parseInt(pageSize));
 		if(tag != null) {
 			pageInfo.setTotalRecordCount(service.getCountSearched(tag, keyword));
+			model.addAttribute("tag", tag);
+			model.addAttribute("keyword", keyword);
 		} else {
 			pageInfo.setTotalRecordCount(service.getCount());
+			model.addAttribute("tag", "all");
+			model.addAttribute("keyword", "");
 		}
 		
 		logger.info("SPList pageInfo page = " + pageInfo.getCurrentPageNo());
