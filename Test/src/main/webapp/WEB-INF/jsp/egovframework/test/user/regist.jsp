@@ -16,7 +16,7 @@
 </div>
 <div class="home-login-box" style="align:center;text-align:center">
 	<div class="login-logo">
-		<div><h1><span><spring:message code="label.login"/></span></h1></div>
+		<div><h1><span><spring:message code="label.user.regist"/></span></h1></div>
 	</div>
 	<form class="login-info-box" method="post">
 		<div class="id-box">

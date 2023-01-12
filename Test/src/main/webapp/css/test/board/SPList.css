@@ -1,0 +1,48 @@
+.board-help-box {
+    background:#555555;
+    margin:auto;
+}
+
+.search-box {
+    text-align:left;
+    float:left;
+}
+
+.pagination-config {
+    text-align:right;
+    float:right;
+}
+
+.main-table {
+    clear:both;
+    background:#ffff99;
+    display:flex;
+    justify-content: space-around;   
+}
+
+table {
+    margin:20px;
+}
+
+tr {
+    padding:10px
+}
+
+tr:first-child {
+    background:#a1b3c5;
+    font-size: large;
+    font:bold;
+    padding:20px;
+    border: solid;
+    border-color: #9b9926cc;
+}
+
+td:nth-child(even) {
+    background:#ffffee;
+}
+
+td:nth-child(odd) {
+    background:#ffffcc;
+}
+
+/* board-table 하위에 3개중 가운데가 table-board와 board-help-box를 갖자 */
