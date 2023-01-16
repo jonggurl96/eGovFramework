@@ -293,3 +293,73 @@ propertiesService.getBoolean("K");
 ```
 
 # AJAX
+```
+$.ajax({
+    type: "post",
+    url: "/",
+    contentType: "application/json", // 보내는 데이터의 타입
+    dataType: "text", // 서버에서 받을 데이터의 타입
+    data: JSON.stringify(data),
+    success: function(data) {
+        // dataType이 'text'일 경우 JSON.parse(data)
+        // dataType: "json" 사용하자
+    }, // 요청 성공
+    error: function(data) {}, // 요청 실패
+    complete: function(data) {}, // 모든 작업을 마친 후 실행
+    beforeSend: function(data) {} // 요청 전 실행
+    ...
+});
+```
+## Callback 함수
+```
+$.ajax({
+    AJAX 요청
+}).done(function(data) {
+    ...
+    // 요청 성공 시 호출
+}).fail(function(data) {
+    ...
+    // 요청 실패 시 호출
+}).always(function(data) {
+    ...
+    //성공 유무와 상관 없이 항상 실행
+});
+```
+> 실행 순서<br>
+> - 성공시
+> > success > complete > done > always
+> - 실패시
+> > error > coplete > fail > always
+
+### done의 장점
+$.ajax();의 반환 값이 애플리케이션의 다른 곳과 연결될 수 있는 지연된 promise 객체
+
+### promise
+```
+let func = () => {
+    let deferred = $.Deferred();
+    try {
+        //로직
+        deferred.resolve("성공");
+    } catch (err) {
+        deferred.reject(err);
+    }
+    return deferred.promise();
+};
+func().done(function(msg) {
+    console.log(msg);
+}).fail(function(err) {
+    console.error(err);
+}).always(function() {
+    console.log("완료");
+});
+// 또는
+func().then(function(msg) {
+    console.log(msg);
+}, function(err) {
+    console.error(err);
+}).then(function() {
+    console.log("완료");
+});
+// then(성공 시 콜백, 실패 시 콜백);
+```
