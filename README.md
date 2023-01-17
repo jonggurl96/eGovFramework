@@ -254,10 +254,15 @@ public class PropertyConfig {
     }
 }
 ```
-> 실제 사용 예시
+> 실제 사용 예시 - Java
 ```
 @Value("#{pageConfigBean['K']}")
 private String pageSize;
+```
+> 실제 사용 예시 - JSP
+> > context-properties.xml에 *.properties 파일 경로 저장
+```
+<spring:message code="K"/>
 ```
 ## context-properties.xml 파일
 > propertiesService properties에 아래 코드 추가
