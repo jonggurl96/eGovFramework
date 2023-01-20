@@ -6,23 +6,21 @@ $(document).ready(function() {
 	let writer = $('#writer').val();
 	let id = $('#login-id').text();
 	
-	$(".btn-warning").on("click", function() {
-		if(writer != id) {
-			alert("수정 불가");
-			return;
-		}
-		form.attr("action", "/board/modify");
-		form.attr("method", "get");
-		form.submit();
-	});
-	$(".btn-danger").on("click", function() {
-		if(writer != id) {
-			alert("삭제 불가");
-			return;
-		}
-		form.attr("action", "/board/remove");
-		form.submit();
-	});
+	if(id != writer) {
+		$(".btn-warning").attr("style", "display: none");
+		$(".btn-danger").attr("style", "display: none");
+	} else {
+		$(".btn-warning").on("click", function() {
+			form.attr("action", "/board/modify");
+			form.attr("method", "get");
+			form.submit();
+		});
+		$(".btn-danger").on("click", function() {
+			form.attr("action", "/board/remove");
+			form.submit();
+		});
+	}
+	
 	$(".btn-primary").on("click", function() {
 		let page = $('#page').val();
 		let rcpp = $('#rcpp').val();

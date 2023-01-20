@@ -29,12 +29,13 @@
 }
 
 #written-content-textarea {
-    margin-top:25px;
+    margin:25px auto 0px;
     width: 95%;
     height:380px;
     border-radius: 5px;
     font-size: large;
     resize:none;
+    padding: 10px;
 }
 
 .content-button-box {
