@@ -15,7 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import cpservice.board.domain.BoardVO;
 import cpservice.board.service.BoardService;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 @Controller
 @RequestMapping("/board/*")

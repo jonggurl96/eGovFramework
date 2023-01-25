@@ -13,8 +13,8 @@
 			<list>
 				<value>classpath:/egovframework/message/message-common</value>
 				<value>classpath:/test/message/message-common</value>
-				<value>classpath:/egovframework/rte/fdl/idgnr/messages/idgnr</value>
-				<value>classpath:/egovframework/rte/fdl/property/messages/properties</value>
+				<value>classpath:/org/egovframework/rte/fdl/idgnr/messages/idgnr</value>
+				<value>classpath:/org/egovframework/rte/fdl/property/messages/properties</value>
 			</list>
 		</property>
 		<property name="cacheSeconds">
@@ -22,7 +22,7 @@
 		</property>
 	</bean>
 	
-	<bean id="leaveaTrace" class="egovframework.rte.fdl.cmmn.trace.LeaveaTrace">
+	<bean id="leaveaTrace" class="org.egovframe.rte.fdl.cmmn.trace.LeaveaTrace">
 		<property name="traceHandlerServices">
 			<list>
 				<ref bean="traceHandlerService" />
@@ -30,7 +30,7 @@
 		</property>
 	</bean>
 
-	<bean id="traceHandlerService" class="egovframework.rte.fdl.cmmn.trace.manager.DefaultTraceHandleManager">
+	<bean id="traceHandlerService" class="org.egovframe.rte.fdl.cmmn.trace.manager.DefaultTraceHandleManager">
 		<property name="reqExpMatcher">
 			<ref bean="antPathMater" />
 		</property>
@@ -47,6 +47,6 @@
 	</bean>
 	
 	<bean id="antPathMater" class="org.springframework.util.AntPathMatcher" />
-	<bean id="defaultTraceHandler" class="egovframework.rte.fdl.cmmn.trace.handler.DefaultTraceHandler" />
+	<bean id="defaultTraceHandler" class="org.egovframe.rte.fdl.cmmn.trace.handler.DefaultTraceHandler" />
 	 
 </beans>

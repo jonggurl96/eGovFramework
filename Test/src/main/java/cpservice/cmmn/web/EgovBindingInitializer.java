@@ -23,7 +23,6 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.support.WebBindingInitializer;
-import org.springframework.web.context.request.WebRequest;
 
 /**
  * @Class Name : EgovBindingInitializer.java
@@ -50,7 +49,7 @@ public class EgovBindingInitializer implements WebBindingInitializer {
 	* @see 개발프레임웍크 실행환경 개발팀
 	*/
 	@Override
-	public void initBinder(WebDataBinder binder, WebRequest request) {
+	public void initBinder(WebDataBinder binder) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 		dateFormat.setLenient(false);
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));

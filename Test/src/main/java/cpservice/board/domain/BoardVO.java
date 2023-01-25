@@ -1,13 +1,11 @@
 package cpservice.board.domain;
 
-import java.util.Date;
-
 public class BoardVO {
 	
 	private int bno;
 	private String title, content, writer;
 	
-	private Date regdate;
+	private String regdate;
 	
 	public int getBno() {
 		return bno;
@@ -33,10 +31,10 @@ public class BoardVO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public Date getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
-	public void setRegdate(Date regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 	@Override

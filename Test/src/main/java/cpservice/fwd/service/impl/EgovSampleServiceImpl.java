@@ -26,8 +26,8 @@ import org.springframework.stereotype.Repository;
 import cpservice.fwd.service.EgovSampleService;
 import cpservice.fwd.service.SampleDefaultVO;
 import cpservice.fwd.service.SampleVO;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.fdl.idgnr.EgovIdGnrService;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
 
 /**
  * @Class Name : EgovSampleServiceImpl.java

@@ -3,7 +3,7 @@
 
 <sqlMap namespace="Sample">
 
-	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="egovMap" type="org.egovframe.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="searchVO" type="cpservice.fwd.service.SampleDefaultVO"/>
 
 	<resultMap id="sample" class="cpservice.fwd.service.SampleVO">

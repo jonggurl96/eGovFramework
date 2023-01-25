@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="boardMapper">
+<mapper namespace="cpservice.board.mapper.BoardMapper">
     
     <select id="read" resultType="boardvo">
         select bno, title, content, writer, regdate
@@ -25,33 +25,31 @@
         where bno = #{bno}
     </delete>
     
-    <select id="listAll" resultType="boardvo">
-        select * from tbl_board
-        order by bno desc
-    </select>
-    
     <select id="countAllList" resultType="int">
         select count(*) from tbl_board
-    </select>
-    
-    <select id="paginatedList" resultType="boardvo" parameterType="hashMap">
-        select bno, title, content, writer, regdate
-        from tbl_board
-        order by bno desc
-        limit #{start}, #{rccp}
     </select>
     
     <select id="search" resultType="boardvo" parameterType="hashMap">
         select bno, title, content, writer, regdate
         from tbl_board
-        where ${tag} like concat('%', #{keyword}, '%')
+        <choose>
+        	<when test="tag == 'title'">where title like concat('%', #{keyword}, '%')</when>
+        	<when test="tag == 'content'">where content like concat('%', #{keyword}, '%')</when>
+        	<when test="tag == 'writer'">where writer like concat('%', #{keyword}, '%')</when>
+        	<otherwise></otherwise>
+        </choose>
         order by bno desc
         limit #{start}, #{rcpp}
     </select>
     
     <select id="countSearchList" parameterType="hashMap" resultType="int">
         select count(*) from tbl_board
-        where ${tag} like concat('%', #{keyword}, '%')
+        <choose>
+        	<when test="tag == 'title'">where title like concat('%', #{keyword}, '%')</when>
+        	<when test="tag == 'content'">where content like concat('%', #{keyword}, '%')</when>
+        	<when test="tag == 'writer'">where writer like concat('%', #{keyword}, '%')</when>
+        	<otherwise></otherwise>
+        </choose>
     </select>
     
 </mapper>

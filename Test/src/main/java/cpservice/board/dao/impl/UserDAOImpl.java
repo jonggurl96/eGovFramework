@@ -15,7 +15,7 @@ public class UserDAOImpl implements UserDAO {
 	@Inject
 	private SqlSession session;
 	
-	private static final String namespace = "userMapper";
+	private static final String namespace = "cpservice.board.mapper.UserMapper";
 
 	@Override
 	public UserVO login(LoginDTO dto) throws Exception {

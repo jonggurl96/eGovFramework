@@ -18,7 +18,7 @@ public class BoardDAOImpl implements BoardDAO {
 	@Inject
 	private SqlSession session;
 	
-	private static final String namespace = "boardMapper";
+	private static final String namespace = "cpservice.board.mapper.BoardMapper";
 
 	@Override
 	public BoardVO read(int bno) throws Exception {

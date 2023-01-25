@@ -20,7 +20,7 @@ import java.util.List;
 import cpservice.fwd.service.SampleDefaultVO;
 import cpservice.fwd.service.SampleVO;
 
-import egovframework.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
 
 /**
  * sample에 관한 데이터처리 매퍼 클래스
