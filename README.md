@@ -194,6 +194,9 @@ private T varName;
 ## abstract class HandlerInterceptorAdapter, interface HandlerInterceptor
 > org.springframework.web.servlet.handler.*;
 
+> HandlerInterceptorAdapter는 egovframeword 4.0.0부터 spring 5.3 이상을 사용하여 제거됨
+> spring 5.3 이상일 경우 implements HandlerInterceptor 사용
+
 ```
 // Controller에서 동작하기 전 수행
 public boolean preHandle(request, response, handler) throws Exception;
