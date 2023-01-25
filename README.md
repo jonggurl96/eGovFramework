@@ -60,6 +60,35 @@ web.xml 3개 url-pattern 변경
         <!-- etc... -->
     </servlet-mapping>
     ```
+# MyBatis 연동하기
+> sqlSession이라는 이름의 빈(SqlSessionFactory) 생성
+1. 기존 DAO 형태로 사용할 경우
+    - extends EgovAbstractMapper
+2. Mapper interface 사용할 경우
+    - @Mapper("**Mapper")
+    - mapper.xml namespace = "**Mapper"
+    - method 이름이 mapper.xml id
+    - @Resource(name = "**Mapper")로 Injection
+    - 아래 설정 필요 (context-mapper.xml)
+    ```
+    <bean class="org.egovframe.rte.psl.dataaccess.mapper.MapperConfigurer>
+        <property name="basePackage" value="/" />
+    </bean>
+    ```
+3. Annotation 방식
+    - xml 작성 필요 없음
+    - dynamic query 사용 불가능
+    ```
+    @Mapper("**Mapper")
+    public interface {
+        @Select("select * from tbl")
+        public List<E> select**(...);
+    }
+    ```
+
+
+
+
 
 # @Controller와 @RestController
 ## @Controller
