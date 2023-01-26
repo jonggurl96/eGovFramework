@@ -1,0 +1,8 @@
+/.svn/
+*.db
+*.sql
+*.class
+*.jar
+/Users/
+*.png
+*.jpg

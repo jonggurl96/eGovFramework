@@ -85,11 +85,7 @@ web.xml 3개 url-pattern 변경
         public List<E> select**(...);
     }
     ```
-> underscore case to camel case
-> > mybatis-config.xml - configuration - settings
-> > ```
-> > <setting name="mapUnderscoreToCamelCase" value="true"/>
-> > ```
+
 
 
 
@@ -112,7 +108,7 @@ web.xml 3개 url-pattern 변경
 > method들은 data와 ResponseEntity를 return
 > ```
 > @RequestMapping(value="/board/{bno}", method=RequestMethod.GET)
-> public ResponseEntity<VO>list(@PathVariable("bno") int bno) {
+> public ResponseEntity<VO>list(@Variable("bno") int bno) {
 >     ResponseEntity<VO> entity = null;
 >     try {
 >         ...
