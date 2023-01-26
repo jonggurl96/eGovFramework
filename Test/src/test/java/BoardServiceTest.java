@@ -57,14 +57,6 @@ public class BoardServiceTest {
 	}
 	
 	@Test
-	public void listAll() throws Exception {
-		List<BoardVO> list = service.listAll();
-		for(BoardVO vo : list) {
-			System.out.println(vo);
-		}
-	}
-	
-	@Test
 	public void testListPaginated() throws Exception {
 		List<BoardVO> list = service.getList(20, 10);
 		for(BoardVO vo : list) {
