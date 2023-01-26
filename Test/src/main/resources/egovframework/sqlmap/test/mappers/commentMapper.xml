@@ -4,7 +4,7 @@
 <mapper namespace="cpservice.board.mapper.CommentMapper">
     
     <select id="list" resultType="commentvo">
-        select cno, bno, writer, content, regdate, group_no groupNo, group_order groupOrder, depth, parentCno
+        select cno, bno, writer, content, regdate, group_no, group_order, depth, parent_cno
         from tbl_comment
         where bno = #{bno}
         order by group_no desc, group_order asc
