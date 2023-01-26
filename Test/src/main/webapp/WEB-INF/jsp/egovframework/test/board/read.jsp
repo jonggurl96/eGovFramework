@@ -37,7 +37,8 @@
 			<!-- 작성자: jonggurl96 -->
 		</div>
 		<div class="written-date-right-box">
-			<fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${vo.regdate }"/>
+			<%-- <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${vo.regdate }"/> --%>
+			<p><span>${vo.regdate }</span></p>
 			<!-- 작성일자: 2023-01-12 13:38 -->
 		</div>
 	</div>

@@ -5,7 +5,7 @@
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 	<!-- SqlSession setup for MyBatis Database Layer -->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<!-- <property name="configLocation" value="classpath:/egovframework/sqlmap/example/sql-mapper-config.xml" /> -->
 		<property name="configLocation" value="classpath:/egovframework/sqlmap/test/mybatis-config.xml" />
@@ -13,14 +13,17 @@
 		<property name="mapperLocations" value="classpath:/egovframework/sqlmap/test/mappers/*Mapper.xml" />
 	</bean>
 	
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+	<!-- <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
 	    <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
-	</bean>
+	</bean> -->
 
 	<!-- MapperConfigurer setup for MyBatis Database Layer with @Mapper("deptMapper") in DeptMapper Interface -->
- 	<!-- <bean class="egovframework.rte.psl.dataaccess.mapper.MapperConfigurer">
+ 	<!-- <bean class="org.egovframe.rte.psl.dataaccess.mapper.MapperConfigurer">
 		<property name="basePackage" value="cpservice.fwd.service.impl" />
 	</bean> -->
+	<bean class="org.egovframe.rte.psl.dataaccess.mapper.MapperConfigurer">
+		<property name="basePackage" value="cpservice.board.mapper"></property>
+	</bean>
 	
 	<context:component-scan base-package="cpservice.board"></context:component-scan>
     

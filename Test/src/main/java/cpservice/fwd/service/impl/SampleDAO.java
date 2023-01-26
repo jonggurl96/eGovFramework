@@ -17,7 +17,7 @@ package cpservice.fwd.service.impl;
 
 import java.util.List;
 
-import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
+import org.egovframe.rte.psl.dataaccess.EgovAbstractDAO;
 
 import org.springframework.stereotype.Repository;
 

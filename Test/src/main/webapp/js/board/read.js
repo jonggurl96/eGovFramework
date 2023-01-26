@@ -35,28 +35,28 @@ let getReplies = () => {
 	
 	$.ajax({
 		type: "get",
-		url: '/replies/all/' + bno,
+		url: '/comments/all/' + bno,
 		success: function(data) {
 			let str = "";
 			$(data).each(function() {
 				str += "<li class='ReplyList'>";
-				str += "<label class='reply-writer' title='" + this.writer + "'>" + this.replyer + "</label>";
-				str += "<label class='reply-text'>" + this.replytext + "</label>";
-				str += "<button class='del-reply-btn' onclick='deleteReply(" + this.rno + ", &quot;" + this.replyer + "&quot;);'>" + delBtnVal + "</button></li>";
+				str += "<label class='reply-writer' title='" + this.writer + "'>" + this.writer + "</label>";
+				str += "<label class='reply-text'>" + this.content + "</label>";
+				str += "<button class='del-reply-btn' onclick='deleteReply(" + this.cno + ", &quot;" + this.writer + "&quot;);'>" + delBtnVal + "</button></li>";
 			});
 			$('#replies').html(str);
 		}
 	});
 }
-let deleteReply = (rno, replyer) => {
+let deleteReply = (cno, writer) => {
 	let id = $('#login-id').text();
-	if(id != replyer) {
+	if(id != writer) {
 		alert("작성자만 삭제 가능합니다.");
 		return;
 	}
 	$.ajax({
 		type: "delete",
-		url: "/replies/" + rno,
+		url: "/comments/" + cno,
 		success: function(data) {
 			alert(data);
 			getReplies();
@@ -64,20 +64,20 @@ let deleteReply = (rno, replyer) => {
 	});
 }
 let writeReply = () => {
-	let replyer = $('#login-id').text();
-	let replytext = $('#writtenReply').val();
+	let writer = $('#login-id').text();
+	let content = $('#writtenReply').val();
 	let bno = $('#bno').val();
 	$.ajax({
 		type:"post",
-		url:"/replies/",
+		url:"/comments/",
 		headers: {
 			"Content-Type":"application/json",
 			"X-HTTP-Method-Override": "post"
 		},
 		dataType: "text",
 		data: JSON.stringify({
-			replytext,
-			replyer,
+			content,
+			writer,
 			bno
 		}),
 		success: function(msg) {

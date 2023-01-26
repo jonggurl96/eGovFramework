@@ -43,7 +43,11 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.springframework.ide.eclipse.core.springnature</nature>
+<<<<<<< HEAD
 		<nature>egovframework.example.dev.imp.ide.natures.egovnature</nature>
+=======
+		<nature>egovframework.dev.imp.ide.natures.egovnature</nature>
+>>>>>>> 2373352726d87fcef8a8d58a812d8d5bd3d801f2
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
 </projectDescription>

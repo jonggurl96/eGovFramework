@@ -2,19 +2,20 @@ package cpservice.board.service.impl;
 
 import java.util.List;
 
-import javax.inject.Inject;
+import javax.annotation.Resource;
 
 import org.springframework.stereotype.Repository;
 
-import cpservice.board.dao.BoardDAO;
 import cpservice.board.domain.BoardVO;
+import cpservice.board.mapper.BoardMapper;
+import cpservice.board.search.Search;
 import cpservice.board.service.BoardService;
 
 @Repository
 public class BoardServiceImpl implements BoardService {
 	
-	@Inject
-	private BoardDAO dao;
+	@Resource(name = "boardMapper")
+	private BoardMapper dao;
 
 	@Override
 	public BoardVO select(int bno) throws Exception {
@@ -41,33 +42,28 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> listAll() throws Exception {
-		// TODO Auto-generated method stub
-		return dao.list();
-	}
-
-	@Override
 	public int getCount() throws Exception {
 		// TODO Auto-generated method stub
-		return dao.getCountAllList();
+		return dao.countAllList();
 	}
 
 	@Override
 	public List<BoardVO> getList(int start, int rcpp) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.getListWithPage(start, rcpp);
+		return dao.search(new Search(start, rcpp));
 	}
 
 	@Override
 	public List<BoardVO> getList(String tag, String keyword, int start, int rcpp) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.searchWithPage(tag, keyword, start, rcpp);
+		return dao.search(new Search(tag, keyword, start, rcpp));
 	}
 
 	@Override
 	public int getCountSearched(String tag, String keyword) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.getCountSearched(tag, keyword);
+		Search search = new Search(tag, keyword);
+		return dao.countSearchList(search);
 	}
 
 }

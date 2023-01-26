@@ -15,7 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import cpservice.board.domain.BoardVO;
 import cpservice.board.service.BoardService;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 @Controller
 @RequestMapping("/board/*")
@@ -28,12 +28,6 @@ public class BoardController {
 	
 	@Value("#{pageConfigBean['page_size']}")
 	private String pageSize;
-	
-	@RequestMapping(value="/list")
-	public void list(Model model) throws Exception {
-		logger.info("listAll() .......");
-		model.addAttribute("list", service.listAll());
-	}
 	
 	@RequestMapping(value="/read", method=RequestMethod.GET)
 	public void read(Criteria cri, Model model) throws Exception {
@@ -80,22 +74,6 @@ public class BoardController {
 		service.regist(vo);
 		rttr.addFlashAttribute("msg", "글이 등록되었습니다.");
 		return "redirect:/board/SPList?page=1&rcpp=10";
-	}
-	
-	@RequestMapping(value="/paginatedList", method=RequestMethod.GET)
-	public void listPage(@RequestParam("page") int page, 
-			@RequestParam("rcpp") int rcpp, Model model) throws Exception {
-		
-		PaginationInfo pageInfo = new PaginationInfo();
-		pageInfo.setCurrentPageNo(page);
-		pageInfo.setRecordCountPerPage(rcpp);
-		pageInfo.setPageSize(Integer.parseInt(pageSize));
-		pageInfo.setTotalRecordCount(service.getCount());
-		logger.info("Page " + pageInfo.getCurrentPageNo());
-		logger.info("Page [start : end] = [" + pageInfo.getFirstPageNoOnPageList() + " : " + pageInfo.getLastPageNoOnPageList() + "]");
-		logger.info("Index [start : end] = [" + pageInfo.getFirstRecordIndex() + " : " + pageInfo.getLastRecordIndex() + "]");
-		model.addAttribute("pageInfo", pageInfo);
-		model.addAttribute("list", service.getList(pageInfo.getFirstRecordIndex(), rcpp));
 	}
 	
 	@RequestMapping("/board/home")

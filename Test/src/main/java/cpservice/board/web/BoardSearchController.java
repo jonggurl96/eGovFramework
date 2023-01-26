@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cpservice.board.domain.BoardVO;
 import cpservice.board.service.BoardService;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 @RestController
 public class BoardSearchController {
