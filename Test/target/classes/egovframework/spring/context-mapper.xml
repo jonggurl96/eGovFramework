@@ -25,6 +25,6 @@
 		<property name="basePackage" value="cpservice.board.mapper"></property>
 	</bean>
 	
-	<!-- <context:component-scan base-package="cpservice.board"></context:component-scan> -->
+	<context:component-scan base-package="cpservice.board"></context:component-scan>
     
 </beans>
