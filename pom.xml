@@ -129,6 +129,12 @@
             <artifactId>org.egovframe.rte.fdl.idgnr</artifactId>
             <version>${org.egovframe.rte.version}</version>
         </dependency>
+        <!-- # Cache -->
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache-core</artifactId>
+            <version>2.6.11</version>
+        </dependency>
 
     </dependencies>
 

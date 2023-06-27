@@ -3,7 +3,7 @@ eGovFrame-4.1.0 textbook 참고
 
 ![Generic Badge](https://img.shields.io/badge/Java-17-brightgreen?style=flat-square)
 ![Generic Badge](https://img.shields.io/badge/eGovFramework-4.1.0-green?style=flat-square)
-![Generic Badge](https://img.shields.io/badge/IntelliJ_IDEA-4.1.0-000000?style=flat-square&logo=IntelliJIDEA&logoColor=white)
+![Generic Badge](https://img.shields.io/badge/IntelliJ_IDEA-4.1.0-black?style=flat-square&logo=IntelliJIDEA&logoColor=white)
 
 # 실행환경
 
@@ -25,3 +25,4 @@ eGovFrame-4.1.0 textbook 참고
 
 ## 공통기반 레이어: cmmn
 - ID Generation
+- Cache
