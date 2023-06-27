@@ -15,26 +15,54 @@
     <description>eGovFramework</description>
     <properties>
         <java.version>17</java.version>
+        <spring.maven.artifact.version>5.3.20</spring.maven.artifact.version>
+        <org.egovframe.rte.version>4.1.0</org.egovframe.rte.version>
     </properties>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <repositories>
+        <repository>
+            <id>mvn2s</id>
+            <url>https://repo1.maven.org/maven2/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>egovframe</id>
+            <url>https://maven.egovframe.go.kr/maven/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>projectRepository</id>
+            <name>Project Repository</name>
+            <url>file://${project.basedir}/src/main/webapp/WEB-INF/lib</url>
+        </repository>
+    </repositories>
+
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jdbc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>3.0.2</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.yaml</groupId>
-                    <artifactId>snakeyaml</artifactId>
-                </exclusion>
-            </exclusions>
+            <version>2.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <dependency>
@@ -42,11 +70,6 @@
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -64,10 +87,47 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter-test</artifactId>
-            <version>3.0.1</version>
-            <scope>test</scope>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- 전자정부 프레임워크 -->
+
+        <!-- Batch Layer -->
+
+        <!-- Business Layer-->
+
+        <!-- Integration Layer -->
+
+        <!-- Mobile Presentation Layer -->
+
+        <!-- Mobile Device API Layer -->
+
+        <!-- Persistence Layer -->
+        <dependency>
+            <groupId>org.egovframe.rte</groupId>
+            <artifactId>org.egovframe.rte.psl.dataaccess</artifactId>
+            <version>${org.egovframe.rte.version}</version>
+        </dependency>
+
+        <!-- Presentation Layer -->
+
+        <!-- Foundation Layer -->
+        <!-- # Common -->
+        <dependency>
+            <groupId>org.egovframe.rte</groupId>
+            <artifactId>org.egovframe.rte.fdl.cmmn</artifactId>
+            <version>${org.egovframe.rte.version}</version>
+        </dependency>
+        <!-- # UUID Generation -->
+        <dependency>
+            <groupId>org.egovframe.rte</groupId>
+            <artifactId>org.egovframe.rte.fdl.idgnr</artifactId>
+            <version>${org.egovframe.rte.version}</version>
         </dependency>
 
     </dependencies>

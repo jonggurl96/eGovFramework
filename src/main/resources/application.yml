@@ -1,0 +1,10 @@
+# server
+server:
+  port: 8080
+
+# import config
+spring:
+  config:
+    import:
+      - "classpath:/cmmn/idgnr.yml"
+      - "classpath:/persistence/dbconfig.yml"
