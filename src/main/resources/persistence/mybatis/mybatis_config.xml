@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <package name="com.zzong.egovframework.persistence.vo"/>
+    </typeAliases>
+
+    <mappers>
+        <mapper resource="persistence/mybatis/mappers/mybatis_post_mapper.xml" />
+    </mappers>
+</configuration>

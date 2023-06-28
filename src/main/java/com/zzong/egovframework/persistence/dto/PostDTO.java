@@ -1,10 +1,10 @@
-package com.zzong.egovframework.persistence.vo;
+package com.zzong.egovframework.persistence.dto;
 
+import com.zzong.egovframework.persistence.vo.PostVO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.apache.ibatis.type.Alias;
 
 import java.time.LocalDateTime;
 
@@ -12,15 +12,14 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Alias("post")
-public class PostVO {
+public class PostDTO {
     /**
      *
-     * PostVO - myBatis로 DB와 연동될 VO
+     * PostDTO - Presentation Layer에 노출될 DTO
      *
      * @author jonggurl
      * @version 1.0.0
-     * 작성일 2023-06-28, 수, 12:27
+     * 작성일 2023-06-28, 수, 12:28
      */
     private String postId;
     
@@ -39,4 +38,15 @@ public class PostVO {
     private String writerIP;
     
     private String modifierIP;
+    
+    public static PostDTO vo2dto(PostVO vo) {
+        return new PostDTO(vo.getPostId(),
+                vo.getPostTitle(),
+                vo.getPassword(),
+                vo.getPostContent(),
+                vo.getCreatedTime(),
+                vo.getLastModifiedTime(),
+                vo.getWriterIP(),
+                vo.getModifierIP());
+    }
 }

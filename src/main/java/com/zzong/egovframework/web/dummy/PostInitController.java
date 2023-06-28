@@ -2,7 +2,7 @@ package com.zzong.egovframework.web.dummy;
 
 import com.zzong.egovframework.cmmn.idgnr.UUIdGenerator;
 import com.zzong.egovframework.persistence.domain.Post;
-import com.zzong.egovframework.persistence.vo.PostVO;
+import com.zzong.egovframework.persistence.dto.PostDTO;
 import lombok.RequiredArgsConstructor;
 import org.egovframe.rte.fdl.cmmn.exception.FdlException;
 import org.springframework.stereotype.Controller;
@@ -27,7 +27,7 @@ public class PostInitController {
     
     @GetMapping("/{amount}")
     @ResponseBody
-    public List<PostVO> initData(@PathVariable int amount) throws FdlException {
+    public List<PostDTO> initData(@PathVariable int amount) throws FdlException {
         List<Post> list = new ArrayList<>();
         for(int i = 0; i < amount; i++) {
             String id = uuIdGenerator.getStringId();
@@ -43,11 +43,11 @@ public class PostInitController {
         Iterable<Post> saveRes = postInitService.saveAll(list);
         
         Iterator<Post> iterator = saveRes.iterator();
-        List<PostVO> retVals = new ArrayList<>();
+        List<PostDTO> retVals = new ArrayList<>();
         
         while(iterator.hasNext()) {
             Post post = iterator.next();
-            PostVO vo = new PostVO();
+            PostDTO vo = new PostDTO();
             vo.setPostId(post.getPostId());
             vo.setPostTitle(post.getPostTitle());
             vo.setPassword(post.getPassword());
