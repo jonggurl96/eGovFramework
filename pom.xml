@@ -123,7 +123,7 @@
             <artifactId>org.egovframe.rte.fdl.cmmn</artifactId>
             <version>${org.egovframe.rte.version}</version>
         </dependency>
-        <!-- # UUID Generation -->
+        <!-- # ID Generation -->
         <dependency>
             <groupId>org.egovframe.rte</groupId>
             <artifactId>org.egovframe.rte.fdl.idgnr</artifactId>

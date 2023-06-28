@@ -1,4 +1,13 @@
 # eGovFramework 4.1.0 ID Generation
+> pom.xml
+> ```xml
+> <dependency>
+>   <groupId>org.egovframe.rte</groupId>
+>   <artifactId>org.egovframe.rte.fdl.idgnr</artifactId>
+>   <version>${org.egovframe.rte.version}</version>
+> </dependency>
+> ```
+
 
 ## UUID Generation
 > bean class = org.egovframe.rte.fdl.idgnr.impl.EgovUUIdGnrServiceImpl
