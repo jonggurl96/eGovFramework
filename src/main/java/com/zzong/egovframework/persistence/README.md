@@ -178,6 +178,14 @@ public interface Mapper {
 > - CRUD, Paging, Sorting을 지원하는 JPARepository<T, ID implements Serializable> 상속
 > - @NoRepositoryBean -> @RequiredArgsConstructor 사용
 
+### pom.xml
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+```
+
 ### Query Method 정의
 - 정해진 키워드에 따라 작성된 메서드 명으로부터 쿼리를 생성
 - 지원하는 키워드
