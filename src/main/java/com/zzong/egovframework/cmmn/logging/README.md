@@ -1,4 +1,6 @@
 # eGovFramework 4.1.0 Logging
+![](https://img.shields.io/badge/log4j-2.17.2?style=plastic)
+
 > [Log4j2](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:rte3:fdl:logging:log4j_2:%EC%84%A4%EC%A0%95_%ED%8C%8C%EC%9D%BC%EC%9D%84_%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94_%EB%B0%A9%EB%B2%95)
 > - 로깅 환경 설정 지원
 > - 로그 기록
