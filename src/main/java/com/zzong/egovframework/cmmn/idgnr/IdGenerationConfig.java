@@ -10,7 +10,7 @@ import org.springframework.context.annotation.PropertySource;
 import java.security.NoSuchAlgorithmException;
 
 @Configuration
-@PropertySource(value = {"classpath:/cmmn/idgnr.yml"})
+@PropertySource(value = {"classpath:/cmmn/idgnr/idgnr.yml"})
 public class IdGenerationConfig {
     
     @Value("${uuid.generatedBy.ipAddress}")
