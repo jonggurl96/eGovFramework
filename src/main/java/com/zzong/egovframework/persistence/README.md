@@ -1,8 +1,8 @@
 # eGovFramework 4.1.0 Persistence Layer
-![](https://img.shields.io/badge/MySQL_8.0-4479A1?style=plastic&logo=MySQL&logoColor=white)
-![](https://img.shields.io/badge/myBatis_3.5.10-brightgreen?style=plastic)
-![](https://img.shields.io/badge/myBatis_spring_2.0.7-6DB33F?style=plastic)
-![](https://img.shields.io/badge/Hibernate_5.6.15.Final-59666C?style=plastic&logo=Hibernate)
+![](https://img.shields.io/badge/MySQL-8.0-4479A1?style=plastic&logo=MySQL&logoColor=white)
+![](https://img.shields.io/badge/myBatis-3.5.10-brightgreen?style=plastic)
+![](https://img.shields.io/badge/myBatis_spring-2.0.7-6DB33F?style=plastic)
+![](https://img.shields.io/badge/Hibernate-5.6.15.Final-59666C?style=plastic&logo=Hibernate)
 
 ## DataSource
 > DataSource 객체 획득 방법
