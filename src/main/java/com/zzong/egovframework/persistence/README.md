@@ -1,4 +1,8 @@
 # eGovFramework 4.1.0 Persistence Layer
+![](https://img.shields.io/badge/MySQL_8.0-4479A1?style=plastic&logo=MySQL&logoColor=white)
+![](https://img.shields.io/badge/myBatis_3.5.10-brightgreen?style=plastic)
+![](https://img.shields.io/badge/myBatis_spring_2.0.7-6DB33F?style=plastic)
+![](https://img.shields.io/badge/Hibernate_5.6.15.Final-59666C?style=plastic&logo=Hibernate)
 
 ## DataSource
 > DataSource 객체 획득 방법
@@ -79,11 +83,6 @@
 `pom.xml`
 ```xml
 <dependencies>
-    <dependency>
-        <groupId>org.mybatis.spring.boot</groupId>
-        <artifactId>mybatis-spring-boot-starter</artifactId>
-        <version>2.3.1</version>
-    </dependency>
     <dependency>
         <groupId>org.egovframe.rte</groupId>
         <artifactId>org.egovframe.rte.psl.dataaccess</artifactId>
@@ -197,6 +196,17 @@ public interface Mapper {
   - OrderBy
   - Not, In, NotIn, True, False
 
+### JPA 로그 출력
+```yaml
+spring:
+  jpa:
+    show-sql: true # sql query 출력
+    properties:
+      hibernate:
+        format_sql: true # sql query formatting해서 출력
+        highlight_sql: true # sql query 명령어 highlight
+        use_sql_comments: true # sql comment 출력
+```
 
 ## Transaction
 > Spring Transaction
