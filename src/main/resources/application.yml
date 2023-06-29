@@ -7,6 +7,6 @@ spring:
   config:
     import:
       - "classpath:/cmmn/cache/cache.yml"
-      - "classpath:/cmmn/idgnr.yml"
+      - "classpath:/cmmn/idgnr/idgnr.yml"
       - "classpath:/persistence/dbconfig.yml"
 
