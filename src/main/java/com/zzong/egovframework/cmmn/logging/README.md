@@ -70,6 +70,15 @@ JDBC Appender를 사용하는데 EgovConnectionFactory bean이 필요한데 bean
 logging:
   config: cmmn/logging.log4j2.yml
 ```
+의존성 추가 yml - json
+```xml
+<dependency>
+  <groupId>com.fasterxml.jackson.dataformat</groupId>
+  <artifactId>jackson-dataformat-yaml</artifactId>
+</dependency>
+```
+
+
 
 - Logger 호출
 ```java
