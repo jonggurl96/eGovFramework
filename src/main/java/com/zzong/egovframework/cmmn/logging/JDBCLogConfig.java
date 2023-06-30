@@ -1,22 +1,22 @@
 package com.zzong.egovframework.cmmn.logging;
 
+import com.zaxxer.hikari.HikariDataSource;
 import org.egovframe.rte.fdl.logging.db.EgovConnectionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.Resource;
-import javax.sql.DataSource;
 
 @Configuration
-public class JDBCAppenderConfig {
+public class JDBCLogConfig {
     
     @Resource(name = "dataSource")
-    private DataSource dataSource;
+    private HikariDataSource dataSource;
     
-    @Bean("egovConnFactory")
+    @Bean("egovConnectionFactory")
     public EgovConnectionFactory egovConnectionFactory() {
-        EgovConnectionFactory bean = new EgovConnectionFactory();
-        bean.setDataSource(dataSource);
-        return bean;
+        EgovConnectionFactory egovConnectionFactory = new EgovConnectionFactory();
+        egovConnectionFactory.setDataSource(dataSource);
+        return egovConnectionFactory;
     }
 }

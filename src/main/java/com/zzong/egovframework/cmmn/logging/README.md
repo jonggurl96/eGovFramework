@@ -1,11 +1,12 @@
 # eGovFramework 4.1.0 Logging
-![](https://img.shields.io/badge/log4j-2.17.2?style=plastic)
+![](https://img.shields.io/badge/log4j-2.17.2-brightgreen?style=plastic)
 
 > [Log4j2](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:rte3:fdl:logging:log4j_2:%EC%84%A4%EC%A0%95_%ED%8C%8C%EC%9D%BC%EC%9D%84_%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94_%EB%B0%A9%EB%B2%95)
 > - 로깅 환경 설정 지원
-> - 로그 기록
+> - 로그 기록 
 
 ## pom.xml
+> org.egovframe.rte.fdl.dataaccess 의존성 추가한 경우 포함되어 있음
 ```xml
 <dependency>
   <groupId>org.egovframe.rte</groupId>
@@ -13,6 +14,20 @@
   <version>${org.egovframe.rte.version}</version>
 </dependency>
 ```
+> SLF4J 충돌 시 spring-boot-starter-web에서 spring-boot-starter-logging 제외
+```xml
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-web</artifactId>
+  <exclusions>
+    <exclusion>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-logging</artifactId>
+    </exclusion>
+  </exclusions>
+</dependency>
+```
+
 
 ## Log4j 환경설정 방법
 - 설정 파일
@@ -45,6 +60,17 @@
 
 </Configuration>
 ```
+
+SpringBoot 실행 시 Web Application Context 구동 전에 파일을 읽게 됨
+
+JDBC Appender를 사용하는데 EgovConnectionFactory bean이 필요한데 bean이 정의되기 전이라 에러가 발생함
+
+따라서 log4j2.xml 파일을 log4j2.yml 파일로 변환 후 application.yml 파일에서 import 하겠음
+```yaml
+logging:
+  config: cmmn/logging.log4j2.yml
+```
+
 - Logger 호출
 ```java
 package foo.bar;

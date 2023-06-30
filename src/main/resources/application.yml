@@ -10,3 +10,6 @@ spring:
       - "classpath:/cmmn/idgnr/idgnr.yml"
       - "classpath:/persistence/dbconfig.yml"
 
+# log4jw.yml import
+logging:
+  config: "src/main/resources/cmmn/logging/log4j2.yml"
