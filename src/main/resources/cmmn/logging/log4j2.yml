@@ -1,21 +1,13 @@
 # log4j2 설정
 Configuration:
   Properties:
-    - Property:
-        name: LOG_EXCEPTION_CONVERSION_WORD
-        value: %xwEx
-    - Property:
-        name: LOG_LEVEL_PATTERN
-        value: %5p
-    - Property:
-        name: LOG_DATEFORMAT_PATTERN
-        value: yyyy-MM-dd HH:mm:ss.SSS
-    - Property:
-        name: CONSOLE_LOG_PATTERN
-        value: "%clr{%d{${sys:LOG_DATEFORMAT_PATTERN}}}{faint} %clr{${sys:LOG_LEVEL_PATTERN}} %clr{%pid}{magenta} %clr{-&#45;&#45;}{faint} %clr{[%15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %m%n${sys:LOG_EXCEPTION_CONVERSION_WORD}"
-    - Property:
-        name: FILE_LOG_PATTERN
-        value: "%d{${LOG_DATEFORMAT_PATTERN}} ${LOG_LEVEL_PATTERN} %pid --- [%t] %-40.40c{1.} : %m%n${sys:LOG_EXCEPTION_CONVERSION_WORD}"
+    Property:
+      - name: "CONSOLE_LOG_PATTERN"
+        value: "%clr{%d{yyyy-MM-dd HH:mm:ss.SSS}}{faint} %clr{%5p} %clr{%pid}{magenta} %clr{-&#45;&#45;}{faint} %clr{[%15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %m%n%xwEx"
+      - name: "FILE_LOG_PATTERN"
+        value: "%d{yyyy-MM-dd HH:mm:ss.SSS} %5p %pid --- [%t] %-40.40c{1.} : %m%n%xwEx"
+      - name: "CONSOLE_LOG_CHARSET"
+        value: "UTF-8"
 
   Appenders:
 
@@ -24,22 +16,24 @@ Configuration:
       target: SYSTEM_OUT
       follow: true
       PatternLayout:
-        pattern: "${CONSOLE_LOG_PATTERN}"
-        charset: "${CONSOLE_LOG_CHARSET}"
+        pattern: ${CONSOLE_LOG_PATTERN}
+        charset: ${CONSOLE_LOG_CHARSET}
 
     File:
       name: file
       fileName: ./logs/file/sample.log
       append: true
       PatternLayout:
-        pattern: "${CONSOLE_LOG_PATTERN}"
+        pattern: ${FILE_LOG_PATTERN}
+        charset: ${CONSOLE_LOG_CHARSET}
 
     RollingFile:
       name: rolling
       fileName: ./logs/rolling/sample.log
       filePattern: ./logs/rolling/sample.%i.log
       PatternLayout:
-        pattern: "${CONSOLE_LOG_PATTERN}"
+        pattern: ${FILE_LOG_PATTERN}
+        charset: ${CONSOLE_LOG_CHARSET}
       Policies:
         SizeBasedTriggeringPolicy:
           size: 8192 # 8 * 1024 Byte = 8KB
