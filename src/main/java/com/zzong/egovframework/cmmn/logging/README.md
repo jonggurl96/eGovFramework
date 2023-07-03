@@ -1,5 +1,5 @@
 # eGovFramework 4.1.0 Logging
-![](https://img.shields.io/badge/log4j-2.17.2-brightgreen?style=plastic)
+![](https://img.shields.io/badge/log4j2-2.17.2-brightgreen?style=plastic)
 
 > [Log4j2](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:rte3:fdl:logging:log4j_2:%EC%84%A4%EC%A0%95_%ED%8C%8C%EC%9D%BC%EC%9D%84_%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94_%EB%B0%A9%EB%B2%95)
 > - 로깅 환경 설정 지원
@@ -68,25 +68,33 @@ JDBC Appender를 사용하는데 EgovConnectionFactory bean이 필요한데 bean
 따라서 log4j2.xml 파일을 log4j2.yml 파일로 변환 후 application.yml 파일에서 import 하겠음
 ```yaml
 logging:
-  config: cmmn/logging.log4j2.yml
+  config: classpath:cmmn/logging.log4j2.yml
 ```
-의존성 추가 yml - json
+- 의존성 추가 yml - json 변환
 ```xml
 <dependency>
   <groupId>com.fasterxml.jackson.dataformat</groupId>
   <artifactId>jackson-dataformat-yaml</artifactId>
 </dependency>
 ```
-
-
+- 의존성 추가 JUL (java.util.logging) - `@Slf4j 사용 가능`
+```xml
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-log4j2</artifactId>
+</dependency>
+```
 
 - Logger 호출
+
 ```java
 package foo.bar;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+@Slf4j
 public class Clazz {
   /**
    * Logger1과 Logger2는 Logger Name이 "foo.bar.Clazz"
@@ -98,6 +106,12 @@ public class Clazz {
    * Logger3 Logger Name은 "X"
    */
   Logger logger3 = LogManager.getLogger("X");
+
+  /**
+   * jul 의존성 추가 후 @Slf4j 사용
+   * logger1, logger2와 같음
+   */
+  log.info("log");
 }
 ```
 

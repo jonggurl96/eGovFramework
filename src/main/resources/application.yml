@@ -12,4 +12,4 @@ spring:
 
 # log4j2.yml import
 logging:
-  config: "src/main/resources/cmmn/logging/log4j2.yml"
+  config: classpath:cmmn/logging/log4j2.yml

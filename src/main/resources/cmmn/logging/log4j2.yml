@@ -1,23 +1,35 @@
-# log4j2 설정
 Configuration:
-  Properties:
-    Property:
-      - name: "CONSOLE_LOG_PATTERN"
-        value: "%clr{%d{yyyy-MM-dd HH:mm:ss.SSS}}{faint} %clr{%5p} %clr{%pid}{magenta} %clr{-&#45;&#45;}{faint} %clr{[%15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %m%n%xwEx"
-      - name: "FILE_LOG_PATTERN"
-        value: "%d{yyyy-MM-dd HH:mm:ss.SSS} %5p %pid --- [%t] %-40.40c{1.} : %m%n%xwEx"
-      - name: "CONSOLE_LOG_CHARSET"
+  name: Default
+  status: info
+
+  properties:
+    property:
+      - name: DATE_FORMAT
+        value: "%style{%d{yyyy-MM-dd HH:mm:ss.SSS}}{blue}"
+      - name: LEVEL_FORMAT
+        value: "%highlight{[%-5level]}{FATAL=red blink, ERROR=red, WARN=yellow, INFO=green, DEBUG=green bold, TRACE=blue}"
+      - name: THREAD-PID
+        value: "[%15.15t-%style{%pid}{cyan}]"
+      - name: METHOD_FQN
+        value: "%style{%-40.40c{1.}}{magenta}"
+      - name: EXCEPTION_LOG
+        value: "%xwEx"
+      - name: FILE_LOG_PATTERN
+        value: "${LEVEL_FORMAT} ${DATE_FORMAT} ${METHOD_FQN} : %m%n${EXCEPTION_LOG}"
+      - name: CONSOLE_LOG_PATTERN
+        value: "${LEVEL_FORMAT} ${DATE_FORMAT} ${THREAD-PID} ${METHOD_FQN} : %m%n${EXCEPTION_LOG}"
+      - name: CHARSET
         value: "UTF-8"
 
-  Appenders:
-
+  appenders:
     Console:
       name: console
       target: SYSTEM_OUT
       follow: true
       PatternLayout:
         pattern: ${CONSOLE_LOG_PATTERN}
-        charset: ${CONSOLE_LOG_CHARSET}
+        charset: ${CHARSET}
+        disableAnsi: false
 
     File:
       name: file
@@ -25,7 +37,7 @@ Configuration:
       append: true
       PatternLayout:
         pattern: ${FILE_LOG_PATTERN}
-        charset: ${CONSOLE_LOG_CHARSET}
+        charset: ${CHARSET}
 
     RollingFile:
       name: rolling
@@ -33,10 +45,16 @@ Configuration:
       filePattern: ./logs/rolling/sample.%i.log
       PatternLayout:
         pattern: ${FILE_LOG_PATTERN}
-        charset: ${CONSOLE_LOG_CHARSET}
+        charset: ${CHARSET}
       Policies:
         SizeBasedTriggeringPolicy:
           size: 8192 # 8 * 1024 Byte = 8KB
+      DefaultRollOverStrategy:
+        Delete:
+          basePath: "./logs/rolling"
+          maxDepth: 1
+          IfAccumulatedFileCount:
+            exceeds: 31
 
     JDBC:
       name: jdbc
@@ -45,38 +63,37 @@ Configuration:
         class: org.egovframe.rte.fdl.logging.db.EgovConnectionFactory
         method: getDatabaseConnection
       Column:
-        - name: eventDate
-          isEventTimestame: true
+        - name: event_date
+          isEventTimestamp: true
         - name: logger
-          pattern: %logger
+          pattern: "%logger"
         - name: level
-          pattern: %level
+          pattern: "%level"
         - name: message
-          pattern: %msg
+          pattern: "%msg"
         - name: exception
-          pattern: "${LOG_EXCEPTION_CONVERSION_WORD}"
+          pattern: "${EXCEPTION_LOG}"
 
   Loggers:
-    Logger:
-      - name: exampleLogger
-        level: debug
-        additivity: false
-        AppenderRef:
-          - ref: console
-          - ref: file
-
-      - name: com.zzong
-        level: debug
-        additivity: false
-        AppenderRef:
-          - ref: file
-          - ref: rolling
-          - ref: jdbc
-
     Root:
       level: info
       additivity: false
       AppenderRef:
         - ref: console
 
+    logger:
 
+      - name: com.zzong.egovframework.EGovFrameworkApplication
+        level: info
+        additivity: false
+        AppenderRef:
+          - ref: console
+
+      - name: com.zzong.egovframework
+        level: debug
+        additivity: false
+        AppenderRef:
+          - ref: file
+          - ref: rolling
+          - ref: jdbc
+          - ref: console
