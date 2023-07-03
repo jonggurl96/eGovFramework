@@ -24,3 +24,8 @@ logging:
 #logging:
 #  level:
 #    org.hibernate.orm.jdbc.bind: trace
+
+# mybatis config classpath
+mybatis:
+  config:
+    classpath: "persistence/mybatis/mybatis_config.xml"
