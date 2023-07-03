@@ -6,6 +6,8 @@ server:
 spring:
   config:
     import:
+      - "classpath:/cmmn/aop/auto-proxy.xml"
+      - "classpath:/cmmn/aop/aspectj-controller.xml"
       - "classpath:/cmmn/cache/cache.yml"
       - "classpath:/cmmn/idgnr/idgnr.yml"
       - "classpath:/persistence/dbconfig.yml"

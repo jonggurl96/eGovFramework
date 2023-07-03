@@ -25,10 +25,16 @@ public class MybatisConfigurer {
         return sqlSessionFactoryBean;
     }
     
+    /**
+     * @return @Mapper Annotation을 사용하기 위한 eGovFramework의 MapperConfigurer Bean 설정
+     */
     @Bean
     public MapperConfigurer mapperConfigurer() {
         MapperConfigurer mapperConfigurer = new MapperConfigurer();
+        
+        /* @Mapper Annotation을 사용하는 interface BasePackage */
         mapperConfigurer.setBasePackage("com.zzong.egovframework.persistence.repository");
+        
         return mapperConfigurer;
     }
 }

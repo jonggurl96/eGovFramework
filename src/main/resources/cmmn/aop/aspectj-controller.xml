@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+    <bean id="controllerAspect" class="com.zzong.egovframework.cmmn.aop.ControllerAspect"/>
+
+    <aop:config>
+        <aop:pointcut id="targetMethod" expression="execution(* com.zzong..*Controller.*(..))"/>
+
+        <aop:aspect ref="controllerAspect">
+            <aop:before method="beforeTarget" pointcut-ref="targetMethod"/>
+            <aop:around method="aroundTarget" pointcut-ref="targetMethod"/>
+            <aop:after method="afterTarget" pointcut-ref="targetMethod"/>
+            <aop:after-returning method="afterReturningTarget" pointcut-ref="targetMethod" returning="retVal"/>
+            <aop:after-throwing method="afterThrowingTarget" pointcut-ref="targetMethod" throwing="exception"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>

@@ -76,24 +76,29 @@ Configuration:
 
   Loggers:
     Root:
-      level: info
+      level: fatal
       additivity: false
       AppenderRef:
         - ref: console
 
     logger:
-
-      - name: com.zzong.egovframework.EGovFrameworkApplication
-        level: info
-        additivity: false
-        AppenderRef:
-          - ref: console
-
-      - name: com.zzong.egovframework
+      - name: com.zzong.egovframework.cmmn.aop
         level: debug
         additivity: false
         AppenderRef:
-          - ref: file
-          - ref: rolling
-          - ref: jdbc
-          - ref: console
+          ref: console
+#
+#      - name: com.zzong.egovframework.EGovFrameworkApplication
+#        level: info
+#        additivity: false
+#        AppenderRef:
+#          - ref: console
+#
+#      - name: com.zzong.egovframework
+#        level: debug
+#        additivity: false
+#        AppenderRef:
+#          - ref: file
+#          - ref: rolling
+#          - ref: jdbc
+#          - ref: console
