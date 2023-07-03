@@ -12,8 +12,7 @@ eGovFrame-4.1.0 textbook 참고
 ## 업무처리 레이어: biz
 
 ## 데이터처리 레이어: persistence
-- Spring Data JDBC - myBatis
-- Spring Data JPA - Auditing
+- DataAccess - myBatis, JPA
 
 ## 배치처리 레이어: batch
 
@@ -25,4 +24,6 @@ eGovFrame-4.1.0 textbook 참고
 
 ## 공통기반 레이어: cmmn
 - ID Generation
+- Logging
+- AOP
 - Cache

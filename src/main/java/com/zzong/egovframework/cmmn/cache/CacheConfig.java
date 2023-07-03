@@ -24,11 +24,8 @@ public class CacheConfig {
         return new EhCacheCacheManager(ehCacheManagerFactoryBean().getObject());
     }
     
-    @Value("${cache.name}")
-    private String cacheName;
-    
     @Bean("cache")
-    public Cache cache() {
+    public Cache cache(@Value("${cache.name}") String cacheName) {
         return ehCacheCacheManager().getCache(cacheName);
     }
 }

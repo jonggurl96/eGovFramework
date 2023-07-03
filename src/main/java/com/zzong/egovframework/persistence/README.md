@@ -118,6 +118,19 @@
 <mapper namespace="@Mapper interface의 FQN">
     
     <!-- Result Object 맵핑 설정 -->
+    <!-- 
+     select COLUMN AS alias와 같이 모든 칼럼에
+     반환타입 변수명과 같은 Alias를 사용할 경우
+     getter/setter 없어도 자동으로 맵핑된다. class org.apache.ibatis.reflection.Reflector
+     기본 생성자와 alias가 유지보수 측면에서 가장 유연하지 않을까 싶다.
+     
+     <<주의사항>>
+     1. @NoArgsConstructor만 존재할 때 alias 필수
+     2. 일부 필드를 가지는 하나의 생성자만 존재할 경우 전달인자만 맵핑
+     3. 생성자가 여러개이며 @NoArgsConstructor가 없을 경우 어떤 생성자를 실행해야 할지 모름 ExecutorException
+     4. @AllArgsConstructor가 존재할 경우 alias의 순서와 전달인자 순서가 동일해야 함
+     
+     -->
     <resultMap id="res" type="alias">
         <result property="id" column="db_id" />
     </resultMap>

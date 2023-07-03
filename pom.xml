@@ -142,10 +142,15 @@
             <artifactId>org.egovframe.rte.fdl.logging</artifactId>
             <version>${org.egovframe.rte.version}</version>
         </dependency>
-        <!-- ### log4j2 yml -->
+            <!-- ### log4j2 yml -->
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-yaml</artifactId>
+        </dependency>
+            <!-- ### JUL - java.util.logging -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
 
     </dependencies>
