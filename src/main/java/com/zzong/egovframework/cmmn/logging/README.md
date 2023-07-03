@@ -6,7 +6,7 @@
 > - 로그 기록 
 
 ## pom.xml
-> org.egovframe.rte.fdl.dataaccess 의존성 추가한 경우 포함되어 있음
+> org.egovframe.rte.fdl.cmmn 또는 org.egovframe.rte.fdl.dataaccess 의존성 추가한 경우 포함되어 있음
 ```xml
 <dependency>
   <groupId>org.egovframe.rte</groupId>
