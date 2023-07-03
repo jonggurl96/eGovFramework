@@ -77,7 +77,7 @@ logging:
   <artifactId>jackson-dataformat-yaml</artifactId>
 </dependency>
 ```
-- 의존성 추가 JUL (java.util.logging) - `@Slf4j 사용 가능`
+- 의존성 추가 Slf4j 구현체 설정 - `@Slf4j 사용 가능`
 ```xml
 <dependency>
   <groupId>org.springframework.boot</groupId>
@@ -108,7 +108,7 @@ public class Clazz {
   Logger logger3 = LogManager.getLogger("X");
 
   /**
-   * jul 의존성 추가 후 @Slf4j 사용
+   * Slf4j 구현체 설정 의존성 추가 후 @Slf4j 사용
    * logger1, logger2와 같음
    */
   log.info("log");
